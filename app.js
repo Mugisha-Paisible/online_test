@@ -7,9 +7,12 @@ const bodyParser = require('body-parser')
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 
+app.use(express.static(__dirname + '/views'));
+
 app.get('/views', function (req, res) {
   //return res.render('index.html')
-  return res.sendFile('index.html', {root : __dirname + '/views'});
+  //return res.sendFile('index.html', {root : __dirname + '/views'});
+  return res.sendFile(__dirname + '/views/index.html');
 })
 
 // port
