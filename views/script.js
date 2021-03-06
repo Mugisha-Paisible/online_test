@@ -301,16 +301,26 @@
 //     //test questions
 // ];
 
-var questions = [];
-var xhttp = new XMLHttpRequest();
-xhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-        questions.push(this.responseText);
-        console.log(questions);
-    }
-};
-xhttp.open("GET", "https://onlinetestapplication.herokuapp.com/questions", true);
-xhttp.send();
+// var questions = [];
+// var xhttp = new XMLHttpRequest();
+// xhttp.onreadystatechange = function() {
+//     if (this.readyState == 4 && this.status == 200) {
+
+//         for(var count=0; count<JSON.parse(this.responseText).length; count++) {
+//             questions.push(JSON.parse(this.responseText)[count]);
+//         }
+
+//         for(var count=0; count<questions.length; count++) {
+//             questions[count].choices = [questions[count].choiceOne, questions[count].choiceTwo, questions[count].choiceThree, questions[count].choiceFour];
+//         }
+
+//         console.log(questions);
+//     }
+// };
+
+// // xhttp.open("GET", "https://onlinetestapplication.herokuapp.com/questions", true);
+// xhttp.open("GET", "http://localhost:3000/questions", true);
+// xhttp.send();
 
 
 
@@ -328,7 +338,31 @@ var quiz = document.getElementById("quiz");
 var timerTable = document.getElementById("timer");
 var randomQuestions;
 
+var questions = [];
+
 function init() {
+
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+
+            for(var count=0; count<JSON.parse(this.responseText).length; count++) {
+                questions.push(JSON.parse(this.responseText)[count]);
+            }
+
+            for(var count=0; count<questions.length; count++) {
+                questions[count].choices = [questions[count].choiceOne, questions[count].choiceTwo, questions[count].choiceThree, questions[count].choiceFour];
+                questions[count].answer = [questions[count].answerText];
+            }
+
+            console.log(questions);
+        }
+    };
+
+    // xhttp.open("GET", "https://onlinetestapplication.herokuapp.com/questions", true);
+    xhttp.open("GET", "http://localhost:3000/questions", true);
+    xhttp.send();
+
     clear();
     reset();
 
