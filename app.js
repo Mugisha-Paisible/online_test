@@ -5,6 +5,9 @@ const path = require('path')
 const db = require('./db/index.js')
 const bodyParser = require('body-parser')
 
+var cors = require('cors')
+app.use(cors())
+
 const questionRoutes = require('./routes/questions')
 
 app.use(bodyParser.urlencoded({ extended: true }))
