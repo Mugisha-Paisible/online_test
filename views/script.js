@@ -359,8 +359,8 @@ function init() {
         }
     };
 
-    // xhttp.open("GET", "https://onlinetestapplication.herokuapp.com/questions", true);
-    xhttp.open("GET", "http://localhost:3000/questions", true);
+    xhttp.open("GET", "https://onlinetestapplication.herokuapp.com/questions", true);
+    //xhttp.open("GET", "http://localhost:3000/questions", true);
     xhttp.send();
 
     clear();
