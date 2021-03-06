@@ -301,10 +301,11 @@
 //     //test questions
 // ];
 
+var questions = [];
 var xhttp = new XMLHttpRequest();
 xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-        var questions = this.responseText;
+        questions.push(this.responseText);
         console.log(questions);
     }
 };
