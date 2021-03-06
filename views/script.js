@@ -297,10 +297,21 @@ var questions = [
         multiAnswer : false,
         flagState: false
     },
-    
 
     //test questions
 ];
+
+
+// xhttp.onreadystatechange = function() {
+//     if (this.readyState == 4 && this.status == 200) {
+//         var questions = this.responseText;
+//         console.log(questions);
+//     }
+// };
+// xhttp.open("GET", "https://onlinetestapplication.herokuapp.com/questions", true);
+// xhttp.send();
+
+
 
 var score = 0;
 var quizDuration = 0;
