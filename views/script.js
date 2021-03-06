@@ -1,315 +1,315 @@
-var questions = [
-    {
-        question : "The processes in project management have been classified into knowledge areas and",
-        choices : ["Methods", "Process Groups", "Categories", "Best practices"],
-        answer : ["Process Groups"],
-        explannation: "Each project management knowledge area is subdivided into a specific process group; each process group is characterized by inputs, tools and techniques, and outputs.",
-        marked : false,
-        correct : false,
-        multiAnswer : false,
-        flagState: false
-    },
-    {
-        question : "The application of knowledge, skills, tools and techniques to project activities to meet the project requirements is referred to as:",
-        choices : ["Project initiation", "Project coordination", "Project administration", "Project management"],
-        answer : ["Project management"],
-        explannation: "The question refers to the specific definition of project management as provided in the PMBOK ® Guide – Sixth Edition, Page 10.",
-        marked : false,
-        correct : false,
-        multiAnswer : false,
-        flagState: false
-    },
-    {
-        question : "Which of the following is NOT an Enterprise Environmental Factor?",
-        choices : ["Organizational culture", "Political climate", "Performance measurement criteria", "Existing facilities and infrastructure"],
-        answer : ["Performance measurement criteria"],
-        explannation: "This is an example of an organizational process asset. Enterprise environmental factors are those internal and external factors that surround and influence project success. Organizational process assets include policies, procedures, templates and other items that will assist in guiding the completion of project work. Refer to pages 38 and 39 in the PMBOK® Guide– Sixth Edition.",
-        marked : false,
-        correct : false,
-        multiAnswer : false,
-        flagState: false
-    },
-    {
-        question : "The person or organization that provides the funding or financial resources for the project is referred to as the:",
-        choices : ["Customer", "Sponsor", "Steering committee", "Project Management Office"],
-        answer : ["Sponsor"],
-        explannation: "The sponsor provides the financial resources and is considered to be a key stakeholder. The customer or user is considered to be the recipient or end user of the product of the project. Refer to page 34 of the PMBOK ® Guide – Sixth Edition.",
-        marked : false,
-        correct : false,
-        multiAnswer : false,
-        flagState: false
-    },
-    {
-        question : "During the project lifecycle, stakeholder identification is expected to be:",
-        choices : ["A continuous and sometimes difficult process", "The responsibility of the project sponsor", "Completed prior to the approval of the project charter", "Focused only on stakeholders who will be impacted favorably as a result of the project"],
-        answer : ["A continuous and sometimes difficult process"],
-        explannation: "As the project proceeds through each phase, additional stakeholders may become involved, while others will be released. Stakeholder identification is conducted primarily by the project management team, but some stakeholders may be identified in the project charter. Stakeholders may include people and organizations that may be affected either negatively or positively by the project outcome.",
-        marked : false,
-        correct : false,
-        multiAnswer : false,
-        flagState: false
-    },
-    {
-        question : "The end of a project phase is generally considered to be:",
-        choices : ["The formal authorization to begin the next project phase", "A natural point to assess project performance and determine if the project should continue", "The point in the project life cycle where risk is at its lowest level", "The point where formal control procedures of the project are generally enforced"],
-        answer : ["A natural point to assess project performance and determine if the project should continue"],
-        explannation: "At the conclusion of a project phase, the project manager and team should assess the performance of the project and determine if acceptable conditions exist to support a decision to move forward or discontinue the project. Risk levels will vary as the project progresses and the end of a phase is generally considered to be a good point to reassess risk. Project control procedures should be enforced throughout the project life cycle. Refer to page 20 of the PMBOK ® Guide – Sixth Edition.",
-        marked : false,
-        correct : false,
-        multiAnswer : false,
-        flagState: false
-    },
-    {
-        question : "Which of the following statements about the project life cycle is false?",
-        choices : ["Cost and staffing are at the highest levels during the start of the project", "Risk is at the highest level of uncertainty at the start of the project", "The control needs of the organization will determine how many phases will be included in the project life cycle", "Project phases are typically completed sequentially but can be overlapped to accelerate completion of a project"],
-        answer : ["Cost and staffing are at the highest levels during the start of the project"],
-        explannation: "Cost and staffing are generally at the lowest levels during the start and first phase of a project. Refer to page 37 of the PMBOK ® Guide – Sixth Edition.",
-        marked : false,
-        correct : false,
-        multiAnswer : false,
-        flagState: false
-    },
-    {
-        question : "You are defining the project in more detail as you move through the phases of the project. You are engaged in:",
-        choices : ["Progressive elaboration", "Project selection", "Monitoring and Controlling", "Decomposition"],
-        answer : ["Progressive elaboration"],
-        explannation: "Progressive elaboration is defined as “moving forward in increments and adding more detail as the project progresses.” Project selection precedes the detailed or progressive planning of a project. Monitoring and controlling is ongoing throughout the project lifecycle and is utilized during and after detailed planning and elaboration of the project. Decomposition is generally associated with the development of the work breakdown structure and refers to the breakdown of large items into smaller, more manageable components.",
-        marked : false,
-        correct : false,
-        multiAnswer : false,
-        flagState: false
-    },
-    {
-        question : "Which of the following is NOT generally considered a characteristic of a project?",
-        choices : ["Unique undertaking", "A temporary endeavor with specific starting and ending dates", "Ongoing and continually supporting organizational operations", "Completed when all objectives are achieved or terminated when the project objectives are no longer viable"],
-        answer : ["Ongoing and continually supporting organizational operations"],
-        explannation: "Projects have some characteristics that are similar to operations. Projects and operations require resources, they are planned, and scheduling is involved. Projects, however, are generally considered temporary, regardless of total scheduled time. Operations are ongoing and support the day-to-day functions of an organization. Refer to page 4 in the PMBOK ® Guide – Sixth Edition.",
-        marked : false,
-        correct : false,
-        multiAnswer : false,
-        flagState: false
-    },
-    {
-        question : "Your company is introducing a new product to be available in the first quarter of the next business cycle. The product will support an existing product as an add-on optional feature. Which of the following is true?",
-        choices : ["This is an ongoing operation because the previous product is already in use by customers", "This is a project because it involves a new product that has not been previously developed", "This is an operation because it adds a feature that will be part of an ongoing sales effort", "This is a program that supports the operations of the company"],
-        answer : ["This is a project because it involves a new product that has not been previously developed"],
-        explannation: "This is a project to develop something new and unique and will have a defined end date. It is not part of operations, nor is it a program. The new product is separate from the existing product. Refer to pages 4 & 5 of the PMBOK ® Guide – Sixth Edition.",
-        marked : false,
-        correct : false,
-        multiAnswer : false,
-        flagState: false
-    },
-    {
-        question : "The processes in project management have been classified into knowledge areas and",
-        choices : ["Methods", "Process Groups", "Categories", "Best practices"],
-        answer : ["Process Groups"],
-        explannation: "Each project management knowledge area is subdivided into a specific process group; each process group is characterized by inputs, tools and techniques, and outputs.",
-        marked : false,
-        correct : false,
-        multiAnswer : false,
-        flagState: false
-    },
-    {
-        question : "The application of knowledge, skills, tools and techniques to project activities to meet the project requirements is referred to as:",
-        choices : ["Project initiation", "Project coordination", "Project administration", "Project management"],
-        answer : ["Project management"],
-        explannation: "The question refers to the specific definition of project management as provided in the PMBOK ® Guide – Sixth Edition, Page 10.",
-        marked : false,
-        correct : false,
-        multiAnswer : false,
-        flagState: false
-    },
-    {
-        question : "Which of the following is NOT an Enterprise Environmental Factor?",
-        choices : ["Organizational culture", "Political climate", "Performance measurement criteria", "Existing facilities and infrastructure"],
-        answer : ["Performance measurement criteria"],
-        explannation: "This is an example of an organizational process asset. Enterprise environmental factors are those internal and external factors that surround and influence project success. Organizational process assets include policies, procedures, templates and other items that will assist in guiding the completion of project work. Refer to pages 38 and 39 in the PMBOK® Guide– Sixth Edition.",
-        marked : false,
-        correct : false,
-        multiAnswer : false,
-        flagState: false
-    },
-    {
-        question : "The person or organization that provides the funding or financial resources for the project is referred to as the:",
-        choices : ["Customer", "Sponsor", "Steering committee", "Project Management Office"],
-        answer : ["Sponsor"],
-        explannation: "The sponsor provides the financial resources and is considered to be a key stakeholder. The customer or user is considered to be the recipient or end user of the product of the project. Refer to page 34 of the PMBOK ® Guide – Sixth Edition.",
-        marked : false,
-        correct : false,
-        multiAnswer : false,
-        flagState: false
-    },{
-        question : "During the project lifecycle, stakeholder identification is expected to be:",
-        choices : ["A continuous and sometimes difficult process", "The responsibility of the project sponsor", "Completed prior to the approval of the project charter", "Focused only on stakeholders who will be impacted favorably as a result of the project"],
-        answer : ["A continuous and sometimes difficult process"],
-        explannation: "As the project proceeds through each phase, additional stakeholders may become involved, while others will be released. Stakeholder identification is conducted primarily by the project management team, but some stakeholders may be identified in the project charter. Stakeholders may include people and organizations that may be affected either negatively or positively by the project outcome.",
-        marked : false,
-        correct : false,
-        multiAnswer : false,
-        flagState: false
-    },
-    {
-        question : "The end of a project phase is generally considered to be:",
-        choices : ["The formal authorization to begin the next project phase", "A natural point to assess project performance and determine if the project should continue", "The point in the project life cycle where risk is at its lowest level", "The point where formal control procedures of the project are generally enforced"],
-        answer : ["A natural point to assess project performance and determine if the project should continue"],
-        explannation: "At the conclusion of a project phase, the project manager and team should assess the performance of the project and determine if acceptable conditions exist to support a decision to move forward or discontinue the project. Risk levels will vary as the project progresses and the end of a phase is generally considered to be a good point to reassess risk. Project control procedures should be enforced throughout the project life cycle. Refer to page 20 of the PMBOK ® Guide – Sixth Edition.",
-        marked : false,
-        correct : false,
-        multiAnswer : false,
-        flagState: false
-    },{
-        question : "Which of the following statements about the project life cycle is false?",
-        choices : ["Cost and staffing are at the highest levels during the start of the project", "Risk is at the highest level of uncertainty at the start of the project", "The control needs of the organization will determine how many phases will be included in the project life cycle", "Project phases are typically completed sequentially but can be overlapped to accelerate completion of a project"],
-        answer : ["Cost and staffing are at the highest levels during the start of the project"],
-        explannation: "Cost and staffing are generally at the lowest levels during the start and first phase of a project. Refer to page 37 of the PMBOK ® Guide – Sixth Edition.",
-        marked : false,
-        correct : false,
-        multiAnswer : false,
-        flagState: false
-    },
-    {
-        question : "You are defining the project in more detail as you move through the phases of the project. You are engaged in:",
-        choices : ["Progressive elaboration", "Project selection", "Monitoring and Controlling", "Decomposition"],
-        answer : ["Progressive elaboration"],
-        explannation: "Progressive elaboration is defined as “moving forward in increments and adding more detail as the project progresses.” Project selection precedes the detailed or progressive planning of a project. Monitoring and controlling is ongoing throughout the project lifecycle and is utilized during and after detailed planning and elaboration of the project. Decomposition is generally associated with the development of the work breakdown structure and refers to the breakdown of large items into smaller, more manageable components.",
-        marked : false,
-        correct : false,
-        multiAnswer : false,
-        flagState: false
-    },
-    {
-        question : "Which of the following is NOT generally considered a characteristic of a project?",
-        choices : ["Unique undertaking", "A temporary endeavor with specific starting and ending dates", "Ongoing and continually supporting organizational operations", "Completed when all objectives are achieved or terminated when the project objectives are no longer viable"],
-        answer : ["Ongoing and continually supporting organizational operations"],
-        explannation: "Projects have some characteristics that are similar to operations. Projects and operations require resources, they are planned, and scheduling is involved. Projects, however, are generally considered temporary, regardless of total scheduled time. Operations are ongoing and support the day-to-day functions of an organization. Refer to page 4 in the PMBOK ® Guide – Sixth Edition.",
-        marked : false,
-        correct : false,
-        multiAnswer : false,
-        flagState: false
-    },
-    {
-        question : "Your company is introducing a new product to be available in the first quarter of the next business cycle. The product will support an existing product as an add-on optional feature. Which of the following is true?",
-        choices : ["This is an ongoing operation because the previous product is already in use by customers", "This is a project because it involves a new product that has not been previously developed", "This is an operation because it adds a feature that will be part of an ongoing sales effort", "This is a program that supports the operations of the company"],
-        answer : ["This is a project because it involves a new product that has not been previously developed"],
-        explannation: "This is a project to develop something new and unique and will have a defined end date. It is not part of operations, nor is it a program. The new product is separate from the existing product. Refer to pages 4 & 5 of the PMBOK ® Guide – Sixth Edition.",
-        marked : false,
-        correct : false,
-        multiAnswer : false,
-        flagState: false
-    },
-    {
-        question : "The processes in project management have been classified into knowledge areas and",
-        choices : ["Methods", "Process Groups", "Categories", "Best practices"],
-        answer : ["Process Groups"],
-        explannation: "Each project management knowledge area is subdivided into a specific process group; each process group is characterized by inputs, tools and techniques, and outputs.",
-        marked : false,
-        correct : false,
-        multiAnswer : false,
-        flagState: false
-    },
-    {
-        question : "The application of knowledge, skills, tools and techniques to project activities to meet the project requirements is referred to as:",
-        choices : ["Project initiation", "Project coordination", "Project administration", "Project management"],
-        answer : ["Project management"],
-        explannation: "The question refers to the specific definition of project management as provided in the PMBOK ® Guide – Sixth Edition, Page 10.",
-        marked : false,
-        correct : false,
-        multiAnswer : false,
-        flagState: false
-    },
-    {
-        question : "Which of the following is NOT an Enterprise Environmental Factor?",
-        choices : ["Organizational culture", "Political climate", "Performance measurement criteria", "Existing facilities and infrastructure"],
-        answer : ["Performance measurement criteria"],
-        explannation: "This is an example of an organizational process asset. Enterprise environmental factors are those internal and external factors that surround and influence project success. Organizational process assets include policies, procedures, templates and other items that will assist in guiding the completion of project work. Refer to pages 38 and 39 in the PMBOK® Guide– Sixth Edition.",
-        marked : false,
-        correct : false,
-        multiAnswer : false,
-        flagState: false
-    },
-    {
-        question : "The person or organization that provides the funding or financial resources for the project is referred to as the:",
-        choices : ["Customer", "Sponsor", "Steering committee", "Project Management Office"],
-        answer : ["Sponsor"],
-        explannation: "The sponsor provides the financial resources and is considered to be a key stakeholder. The customer or user is considered to be the recipient or end user of the product of the project. Refer to page 34 of the PMBOK ® Guide – Sixth Edition.",
-        marked : false,
-        correct : false,
-        multiAnswer : false,
-        flagState: false
-    },
-    {
-        question : "During the project lifecycle, stakeholder identification is expected to be:",
-        choices : ["A continuous and sometimes difficult process", "The responsibility of the project sponsor", "Completed prior to the approval of the project charter", "Focused only on stakeholders who will be impacted favorably as a result of the project"],
-        answer : ["A continuous and sometimes difficult process"],
-        explannation: "As the project proceeds through each phase, additional stakeholders may become involved, while others will be released. Stakeholder identification is conducted primarily by the project management team, but some stakeholders may be identified in the project charter. Stakeholders may include people and organizations that may be affected either negatively or positively by the project outcome.",
-        marked : false,
-        correct : false,
-        multiAnswer : false,
-        flagState: false
-    },
-    {
-        question : "The end of a project phase is generally considered to be:",
-        choices : ["The formal authorization to begin the next project phase", "A natural point to assess project performance and determine if the project should continue", "The point in the project life cycle where risk is at its lowest level", "The point where formal control procedures of the project are generally enforced"],
-        answer : ["A natural point to assess project performance and determine if the project should continue"],
-        explannation: "At the conclusion of a project phase, the project manager and team should assess the performance of the project and determine if acceptable conditions exist to support a decision to move forward or discontinue the project. Risk levels will vary as the project progresses and the end of a phase is generally considered to be a good point to reassess risk. Project control procedures should be enforced throughout the project life cycle. Refer to page 20 of the PMBOK ® Guide – Sixth Edition.",
-        marked : false,
-        correct : false,
-        multiAnswer : false,
-        flagState: false
-    },
-    {
-        question : "Which of the following statements about the project life cycle is false?",
-        choices : ["Cost and staffing are at the highest levels during the start of the project", "Risk is at the highest level of uncertainty at the start of the project", "The control needs of the organization will determine how many phases will be included in the project life cycle", "Project phases are typically completed sequentially but can be overlapped to accelerate completion of a project"],
-        answer : ["Cost and staffing are at the highest levels during the start of the project"],
-        explannation: "Cost and staffing are generally at the lowest levels during the start and first phase of a project. Refer to page 37 of the PMBOK ® Guide – Sixth Edition.",
-        marked : false,
-        correct : false,
-        multiAnswer : false,
-        flagState: false
-    },
-    {
-        question : "You are defining the project in more detail as you move through the phases of the project. You are engaged in:",
-        choices : ["Progressive elaboration", "Project selection", "Monitoring and Controlling", "Decomposition"],
-        answer : ["Progressive elaboration"],
-        explannation: "Progressive elaboration is defined as “moving forward in increments and adding more detail as the project progresses.” Project selection precedes the detailed or progressive planning of a project. Monitoring and controlling is ongoing throughout the project lifecycle and is utilized during and after detailed planning and elaboration of the project. Decomposition is generally associated with the development of the work breakdown structure and refers to the breakdown of large items into smaller, more manageable components.",
-        marked : false,
-        correct : false,
-        multiAnswer : false,
-        flagState: false
-    },
-    {
-        question : "Which of the following is NOT generally considered a characteristic of a project?",
-        choices : ["Unique undertaking", "A temporary endeavor with specific starting and ending dates", "Ongoing and continually supporting organizational operations", "Completed when all objectives are achieved or terminated when the project objectives are no longer viable"],
-        answer : ["Ongoing and continually supporting organizational operations"],
-        explannation: "Projects have some characteristics that are similar to operations. Projects and operations require resources, they are planned, and scheduling is involved. Projects, however, are generally considered temporary, regardless of total scheduled time. Operations are ongoing and support the day-to-day functions of an organization. Refer to page 4 in the PMBOK ® Guide – Sixth Edition.",
-        marked : false,
-        correct : false,
-        multiAnswer : false,
-        flagState: false
-    },
-    {
-        question : "Your company is introducing a new product to be available in the first quarter of the next business cycle. The product will support an existing product as an add-on optional feature. Which of the following is true?",
-        choices : ["This is an ongoing operation because the previous product is already in use by customers", "This is a project because it involves a new product that has not been previously developed", "This is an operation because it adds a feature that will be part of an ongoing sales effort", "This is a program that supports the operations of the company"],
-        answer : ["This is a project because it involves a new product that has not been previously developed"],
-        explannation: "This is a project to develop something new and unique and will have a defined end date. It is not part of operations, nor is it a program. The new product is separate from the existing product. Refer to pages 4 & 5 of the PMBOK ® Guide – Sixth Edition.",
-        marked : false,
-        correct : false,
-        multiAnswer : false,
-        flagState: false
-    },
+// var questions = [
+//     {
+//         question : "The processes in project management have been classified into knowledge areas and",
+//         choices : ["Methods", "Process Groups", "Categories", "Best practices"],
+//         answer : ["Process Groups"],
+//         explannation: "Each project management knowledge area is subdivided into a specific process group; each process group is characterized by inputs, tools and techniques, and outputs.",
+//         marked : false,
+//         correct : false,
+//         multiAnswer : false,
+//         flagState: false
+//     },
+//     {
+//         question : "The application of knowledge, skills, tools and techniques to project activities to meet the project requirements is referred to as:",
+//         choices : ["Project initiation", "Project coordination", "Project administration", "Project management"],
+//         answer : ["Project management"],
+//         explannation: "The question refers to the specific definition of project management as provided in the PMBOK ® Guide – Sixth Edition, Page 10.",
+//         marked : false,
+//         correct : false,
+//         multiAnswer : false,
+//         flagState: false
+//     },
+//     {
+//         question : "Which of the following is NOT an Enterprise Environmental Factor?",
+//         choices : ["Organizational culture", "Political climate", "Performance measurement criteria", "Existing facilities and infrastructure"],
+//         answer : ["Performance measurement criteria"],
+//         explannation: "This is an example of an organizational process asset. Enterprise environmental factors are those internal and external factors that surround and influence project success. Organizational process assets include policies, procedures, templates and other items that will assist in guiding the completion of project work. Refer to pages 38 and 39 in the PMBOK® Guide– Sixth Edition.",
+//         marked : false,
+//         correct : false,
+//         multiAnswer : false,
+//         flagState: false
+//     },
+//     {
+//         question : "The person or organization that provides the funding or financial resources for the project is referred to as the:",
+//         choices : ["Customer", "Sponsor", "Steering committee", "Project Management Office"],
+//         answer : ["Sponsor"],
+//         explannation: "The sponsor provides the financial resources and is considered to be a key stakeholder. The customer or user is considered to be the recipient or end user of the product of the project. Refer to page 34 of the PMBOK ® Guide – Sixth Edition.",
+//         marked : false,
+//         correct : false,
+//         multiAnswer : false,
+//         flagState: false
+//     },
+//     {
+//         question : "During the project lifecycle, stakeholder identification is expected to be:",
+//         choices : ["A continuous and sometimes difficult process", "The responsibility of the project sponsor", "Completed prior to the approval of the project charter", "Focused only on stakeholders who will be impacted favorably as a result of the project"],
+//         answer : ["A continuous and sometimes difficult process"],
+//         explannation: "As the project proceeds through each phase, additional stakeholders may become involved, while others will be released. Stakeholder identification is conducted primarily by the project management team, but some stakeholders may be identified in the project charter. Stakeholders may include people and organizations that may be affected either negatively or positively by the project outcome.",
+//         marked : false,
+//         correct : false,
+//         multiAnswer : false,
+//         flagState: false
+//     },
+//     {
+//         question : "The end of a project phase is generally considered to be:",
+//         choices : ["The formal authorization to begin the next project phase", "A natural point to assess project performance and determine if the project should continue", "The point in the project life cycle where risk is at its lowest level", "The point where formal control procedures of the project are generally enforced"],
+//         answer : ["A natural point to assess project performance and determine if the project should continue"],
+//         explannation: "At the conclusion of a project phase, the project manager and team should assess the performance of the project and determine if acceptable conditions exist to support a decision to move forward or discontinue the project. Risk levels will vary as the project progresses and the end of a phase is generally considered to be a good point to reassess risk. Project control procedures should be enforced throughout the project life cycle. Refer to page 20 of the PMBOK ® Guide – Sixth Edition.",
+//         marked : false,
+//         correct : false,
+//         multiAnswer : false,
+//         flagState: false
+//     },
+//     {
+//         question : "Which of the following statements about the project life cycle is false?",
+//         choices : ["Cost and staffing are at the highest levels during the start of the project", "Risk is at the highest level of uncertainty at the start of the project", "The control needs of the organization will determine how many phases will be included in the project life cycle", "Project phases are typically completed sequentially but can be overlapped to accelerate completion of a project"],
+//         answer : ["Cost and staffing are at the highest levels during the start of the project"],
+//         explannation: "Cost and staffing are generally at the lowest levels during the start and first phase of a project. Refer to page 37 of the PMBOK ® Guide – Sixth Edition.",
+//         marked : false,
+//         correct : false,
+//         multiAnswer : false,
+//         flagState: false
+//     },
+//     {
+//         question : "You are defining the project in more detail as you move through the phases of the project. You are engaged in:",
+//         choices : ["Progressive elaboration", "Project selection", "Monitoring and Controlling", "Decomposition"],
+//         answer : ["Progressive elaboration"],
+//         explannation: "Progressive elaboration is defined as “moving forward in increments and adding more detail as the project progresses.” Project selection precedes the detailed or progressive planning of a project. Monitoring and controlling is ongoing throughout the project lifecycle and is utilized during and after detailed planning and elaboration of the project. Decomposition is generally associated with the development of the work breakdown structure and refers to the breakdown of large items into smaller, more manageable components.",
+//         marked : false,
+//         correct : false,
+//         multiAnswer : false,
+//         flagState: false
+//     },
+//     {
+//         question : "Which of the following is NOT generally considered a characteristic of a project?",
+//         choices : ["Unique undertaking", "A temporary endeavor with specific starting and ending dates", "Ongoing and continually supporting organizational operations", "Completed when all objectives are achieved or terminated when the project objectives are no longer viable"],
+//         answer : ["Ongoing and continually supporting organizational operations"],
+//         explannation: "Projects have some characteristics that are similar to operations. Projects and operations require resources, they are planned, and scheduling is involved. Projects, however, are generally considered temporary, regardless of total scheduled time. Operations are ongoing and support the day-to-day functions of an organization. Refer to page 4 in the PMBOK ® Guide – Sixth Edition.",
+//         marked : false,
+//         correct : false,
+//         multiAnswer : false,
+//         flagState: false
+//     },
+//     {
+//         question : "Your company is introducing a new product to be available in the first quarter of the next business cycle. The product will support an existing product as an add-on optional feature. Which of the following is true?",
+//         choices : ["This is an ongoing operation because the previous product is already in use by customers", "This is a project because it involves a new product that has not been previously developed", "This is an operation because it adds a feature that will be part of an ongoing sales effort", "This is a program that supports the operations of the company"],
+//         answer : ["This is a project because it involves a new product that has not been previously developed"],
+//         explannation: "This is a project to develop something new and unique and will have a defined end date. It is not part of operations, nor is it a program. The new product is separate from the existing product. Refer to pages 4 & 5 of the PMBOK ® Guide – Sixth Edition.",
+//         marked : false,
+//         correct : false,
+//         multiAnswer : false,
+//         flagState: false
+//     },
+//     {
+//         question : "The processes in project management have been classified into knowledge areas and",
+//         choices : ["Methods", "Process Groups", "Categories", "Best practices"],
+//         answer : ["Process Groups"],
+//         explannation: "Each project management knowledge area is subdivided into a specific process group; each process group is characterized by inputs, tools and techniques, and outputs.",
+//         marked : false,
+//         correct : false,
+//         multiAnswer : false,
+//         flagState: false
+//     },
+//     {
+//         question : "The application of knowledge, skills, tools and techniques to project activities to meet the project requirements is referred to as:",
+//         choices : ["Project initiation", "Project coordination", "Project administration", "Project management"],
+//         answer : ["Project management"],
+//         explannation: "The question refers to the specific definition of project management as provided in the PMBOK ® Guide – Sixth Edition, Page 10.",
+//         marked : false,
+//         correct : false,
+//         multiAnswer : false,
+//         flagState: false
+//     },
+//     {
+//         question : "Which of the following is NOT an Enterprise Environmental Factor?",
+//         choices : ["Organizational culture", "Political climate", "Performance measurement criteria", "Existing facilities and infrastructure"],
+//         answer : ["Performance measurement criteria"],
+//         explannation: "This is an example of an organizational process asset. Enterprise environmental factors are those internal and external factors that surround and influence project success. Organizational process assets include policies, procedures, templates and other items that will assist in guiding the completion of project work. Refer to pages 38 and 39 in the PMBOK® Guide– Sixth Edition.",
+//         marked : false,
+//         correct : false,
+//         multiAnswer : false,
+//         flagState: false
+//     },
+//     {
+//         question : "The person or organization that provides the funding or financial resources for the project is referred to as the:",
+//         choices : ["Customer", "Sponsor", "Steering committee", "Project Management Office"],
+//         answer : ["Sponsor"],
+//         explannation: "The sponsor provides the financial resources and is considered to be a key stakeholder. The customer or user is considered to be the recipient or end user of the product of the project. Refer to page 34 of the PMBOK ® Guide – Sixth Edition.",
+//         marked : false,
+//         correct : false,
+//         multiAnswer : false,
+//         flagState: false
+//     },{
+//         question : "During the project lifecycle, stakeholder identification is expected to be:",
+//         choices : ["A continuous and sometimes difficult process", "The responsibility of the project sponsor", "Completed prior to the approval of the project charter", "Focused only on stakeholders who will be impacted favorably as a result of the project"],
+//         answer : ["A continuous and sometimes difficult process"],
+//         explannation: "As the project proceeds through each phase, additional stakeholders may become involved, while others will be released. Stakeholder identification is conducted primarily by the project management team, but some stakeholders may be identified in the project charter. Stakeholders may include people and organizations that may be affected either negatively or positively by the project outcome.",
+//         marked : false,
+//         correct : false,
+//         multiAnswer : false,
+//         flagState: false
+//     },
+//     {
+//         question : "The end of a project phase is generally considered to be:",
+//         choices : ["The formal authorization to begin the next project phase", "A natural point to assess project performance and determine if the project should continue", "The point in the project life cycle where risk is at its lowest level", "The point where formal control procedures of the project are generally enforced"],
+//         answer : ["A natural point to assess project performance and determine if the project should continue"],
+//         explannation: "At the conclusion of a project phase, the project manager and team should assess the performance of the project and determine if acceptable conditions exist to support a decision to move forward or discontinue the project. Risk levels will vary as the project progresses and the end of a phase is generally considered to be a good point to reassess risk. Project control procedures should be enforced throughout the project life cycle. Refer to page 20 of the PMBOK ® Guide – Sixth Edition.",
+//         marked : false,
+//         correct : false,
+//         multiAnswer : false,
+//         flagState: false
+//     },{
+//         question : "Which of the following statements about the project life cycle is false?",
+//         choices : ["Cost and staffing are at the highest levels during the start of the project", "Risk is at the highest level of uncertainty at the start of the project", "The control needs of the organization will determine how many phases will be included in the project life cycle", "Project phases are typically completed sequentially but can be overlapped to accelerate completion of a project"],
+//         answer : ["Cost and staffing are at the highest levels during the start of the project"],
+//         explannation: "Cost and staffing are generally at the lowest levels during the start and first phase of a project. Refer to page 37 of the PMBOK ® Guide – Sixth Edition.",
+//         marked : false,
+//         correct : false,
+//         multiAnswer : false,
+//         flagState: false
+//     },
+//     {
+//         question : "You are defining the project in more detail as you move through the phases of the project. You are engaged in:",
+//         choices : ["Progressive elaboration", "Project selection", "Monitoring and Controlling", "Decomposition"],
+//         answer : ["Progressive elaboration"],
+//         explannation: "Progressive elaboration is defined as “moving forward in increments and adding more detail as the project progresses.” Project selection precedes the detailed or progressive planning of a project. Monitoring and controlling is ongoing throughout the project lifecycle and is utilized during and after detailed planning and elaboration of the project. Decomposition is generally associated with the development of the work breakdown structure and refers to the breakdown of large items into smaller, more manageable components.",
+//         marked : false,
+//         correct : false,
+//         multiAnswer : false,
+//         flagState: false
+//     },
+//     {
+//         question : "Which of the following is NOT generally considered a characteristic of a project?",
+//         choices : ["Unique undertaking", "A temporary endeavor with specific starting and ending dates", "Ongoing and continually supporting organizational operations", "Completed when all objectives are achieved or terminated when the project objectives are no longer viable"],
+//         answer : ["Ongoing and continually supporting organizational operations"],
+//         explannation: "Projects have some characteristics that are similar to operations. Projects and operations require resources, they are planned, and scheduling is involved. Projects, however, are generally considered temporary, regardless of total scheduled time. Operations are ongoing and support the day-to-day functions of an organization. Refer to page 4 in the PMBOK ® Guide – Sixth Edition.",
+//         marked : false,
+//         correct : false,
+//         multiAnswer : false,
+//         flagState: false
+//     },
+//     {
+//         question : "Your company is introducing a new product to be available in the first quarter of the next business cycle. The product will support an existing product as an add-on optional feature. Which of the following is true?",
+//         choices : ["This is an ongoing operation because the previous product is already in use by customers", "This is a project because it involves a new product that has not been previously developed", "This is an operation because it adds a feature that will be part of an ongoing sales effort", "This is a program that supports the operations of the company"],
+//         answer : ["This is a project because it involves a new product that has not been previously developed"],
+//         explannation: "This is a project to develop something new and unique and will have a defined end date. It is not part of operations, nor is it a program. The new product is separate from the existing product. Refer to pages 4 & 5 of the PMBOK ® Guide – Sixth Edition.",
+//         marked : false,
+//         correct : false,
+//         multiAnswer : false,
+//         flagState: false
+//     },
+//     {
+//         question : "The processes in project management have been classified into knowledge areas and",
+//         choices : ["Methods", "Process Groups", "Categories", "Best practices"],
+//         answer : ["Process Groups"],
+//         explannation: "Each project management knowledge area is subdivided into a specific process group; each process group is characterized by inputs, tools and techniques, and outputs.",
+//         marked : false,
+//         correct : false,
+//         multiAnswer : false,
+//         flagState: false
+//     },
+//     {
+//         question : "The application of knowledge, skills, tools and techniques to project activities to meet the project requirements is referred to as:",
+//         choices : ["Project initiation", "Project coordination", "Project administration", "Project management"],
+//         answer : ["Project management"],
+//         explannation: "The question refers to the specific definition of project management as provided in the PMBOK ® Guide – Sixth Edition, Page 10.",
+//         marked : false,
+//         correct : false,
+//         multiAnswer : false,
+//         flagState: false
+//     },
+//     {
+//         question : "Which of the following is NOT an Enterprise Environmental Factor?",
+//         choices : ["Organizational culture", "Political climate", "Performance measurement criteria", "Existing facilities and infrastructure"],
+//         answer : ["Performance measurement criteria"],
+//         explannation: "This is an example of an organizational process asset. Enterprise environmental factors are those internal and external factors that surround and influence project success. Organizational process assets include policies, procedures, templates and other items that will assist in guiding the completion of project work. Refer to pages 38 and 39 in the PMBOK® Guide– Sixth Edition.",
+//         marked : false,
+//         correct : false,
+//         multiAnswer : false,
+//         flagState: false
+//     },
+//     {
+//         question : "The person or organization that provides the funding or financial resources for the project is referred to as the:",
+//         choices : ["Customer", "Sponsor", "Steering committee", "Project Management Office"],
+//         answer : ["Sponsor"],
+//         explannation: "The sponsor provides the financial resources and is considered to be a key stakeholder. The customer or user is considered to be the recipient or end user of the product of the project. Refer to page 34 of the PMBOK ® Guide – Sixth Edition.",
+//         marked : false,
+//         correct : false,
+//         multiAnswer : false,
+//         flagState: false
+//     },
+//     {
+//         question : "During the project lifecycle, stakeholder identification is expected to be:",
+//         choices : ["A continuous and sometimes difficult process", "The responsibility of the project sponsor", "Completed prior to the approval of the project charter", "Focused only on stakeholders who will be impacted favorably as a result of the project"],
+//         answer : ["A continuous and sometimes difficult process"],
+//         explannation: "As the project proceeds through each phase, additional stakeholders may become involved, while others will be released. Stakeholder identification is conducted primarily by the project management team, but some stakeholders may be identified in the project charter. Stakeholders may include people and organizations that may be affected either negatively or positively by the project outcome.",
+//         marked : false,
+//         correct : false,
+//         multiAnswer : false,
+//         flagState: false
+//     },
+//     {
+//         question : "The end of a project phase is generally considered to be:",
+//         choices : ["The formal authorization to begin the next project phase", "A natural point to assess project performance and determine if the project should continue", "The point in the project life cycle where risk is at its lowest level", "The point where formal control procedures of the project are generally enforced"],
+//         answer : ["A natural point to assess project performance and determine if the project should continue"],
+//         explannation: "At the conclusion of a project phase, the project manager and team should assess the performance of the project and determine if acceptable conditions exist to support a decision to move forward or discontinue the project. Risk levels will vary as the project progresses and the end of a phase is generally considered to be a good point to reassess risk. Project control procedures should be enforced throughout the project life cycle. Refer to page 20 of the PMBOK ® Guide – Sixth Edition.",
+//         marked : false,
+//         correct : false,
+//         multiAnswer : false,
+//         flagState: false
+//     },
+//     {
+//         question : "Which of the following statements about the project life cycle is false?",
+//         choices : ["Cost and staffing are at the highest levels during the start of the project", "Risk is at the highest level of uncertainty at the start of the project", "The control needs of the organization will determine how many phases will be included in the project life cycle", "Project phases are typically completed sequentially but can be overlapped to accelerate completion of a project"],
+//         answer : ["Cost and staffing are at the highest levels during the start of the project"],
+//         explannation: "Cost and staffing are generally at the lowest levels during the start and first phase of a project. Refer to page 37 of the PMBOK ® Guide – Sixth Edition.",
+//         marked : false,
+//         correct : false,
+//         multiAnswer : false,
+//         flagState: false
+//     },
+//     {
+//         question : "You are defining the project in more detail as you move through the phases of the project. You are engaged in:",
+//         choices : ["Progressive elaboration", "Project selection", "Monitoring and Controlling", "Decomposition"],
+//         answer : ["Progressive elaboration"],
+//         explannation: "Progressive elaboration is defined as “moving forward in increments and adding more detail as the project progresses.” Project selection precedes the detailed or progressive planning of a project. Monitoring and controlling is ongoing throughout the project lifecycle and is utilized during and after detailed planning and elaboration of the project. Decomposition is generally associated with the development of the work breakdown structure and refers to the breakdown of large items into smaller, more manageable components.",
+//         marked : false,
+//         correct : false,
+//         multiAnswer : false,
+//         flagState: false
+//     },
+//     {
+//         question : "Which of the following is NOT generally considered a characteristic of a project?",
+//         choices : ["Unique undertaking", "A temporary endeavor with specific starting and ending dates", "Ongoing and continually supporting organizational operations", "Completed when all objectives are achieved or terminated when the project objectives are no longer viable"],
+//         answer : ["Ongoing and continually supporting organizational operations"],
+//         explannation: "Projects have some characteristics that are similar to operations. Projects and operations require resources, they are planned, and scheduling is involved. Projects, however, are generally considered temporary, regardless of total scheduled time. Operations are ongoing and support the day-to-day functions of an organization. Refer to page 4 in the PMBOK ® Guide – Sixth Edition.",
+//         marked : false,
+//         correct : false,
+//         multiAnswer : false,
+//         flagState: false
+//     },
+//     {
+//         question : "Your company is introducing a new product to be available in the first quarter of the next business cycle. The product will support an existing product as an add-on optional feature. Which of the following is true?",
+//         choices : ["This is an ongoing operation because the previous product is already in use by customers", "This is a project because it involves a new product that has not been previously developed", "This is an operation because it adds a feature that will be part of an ongoing sales effort", "This is a program that supports the operations of the company"],
+//         answer : ["This is a project because it involves a new product that has not been previously developed"],
+//         explannation: "This is a project to develop something new and unique and will have a defined end date. It is not part of operations, nor is it a program. The new product is separate from the existing product. Refer to pages 4 & 5 of the PMBOK ® Guide – Sixth Edition.",
+//         marked : false,
+//         correct : false,
+//         multiAnswer : false,
+//         flagState: false
+//     },
 
-    //test questions
-];
+//     //test questions
+// ];
 
-
-// xhttp.onreadystatechange = function() {
-//     if (this.readyState == 4 && this.status == 200) {
-//         var questions = this.responseText;
-//         console.log(questions);
-//     }
-// };
-// xhttp.open("GET", "https://onlinetestapplication.herokuapp.com/questions", true);
-// xhttp.send();
+var xhttp = new XMLHttpRequest();
+xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        var questions = this.responseText;
+        console.log(questions);
+    }
+};
+xhttp.open("GET", "https://onlinetestapplication.herokuapp.com/questions", true);
+xhttp.send();
 
 
 
