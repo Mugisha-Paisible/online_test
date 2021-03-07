@@ -6,9 +6,6 @@ body{
     background-size: 100px 50px;
     margin: 0;
 }
-/* * {
-    outline: 1px solid red;
-} */
 body::-webkit-scrollbar-thumb {
     background-color: #266a92;
     border: 4px solid transparent;
@@ -64,15 +61,15 @@ body::-webkit-scrollbar {
 }
 #timer{
     position: absolute;
-    right: 12%;
-    top: 15%;
+    right: 16.5%;
+    top: 14%;
     align-self: flex-end;
 }
 .quiz-container{
     position: absolute;
     left: 50%;
     transform: translate(-50%);
-    top: 16%;
+    top: 14%;
     z-index: 1;
     padding: 2rem;
     padding-top: 1rem;
@@ -412,8 +409,13 @@ hr {
     font-size: smaller;
 }
 footer {
-    position:fixed;
-    top: 97%;
+    position:relative;
+    bottom: -66%;
     left: 37%;
     font-size: smaller;
+    display: inline-block;
 }
+
+/* * {
+    outline: 1px solid red;
+} */
