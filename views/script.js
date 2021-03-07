@@ -390,7 +390,7 @@ function init() {
         username = nameInput.value;
         
         //document.getElementById('onlineTest').style.visibility = "hidden";
-        if(username!="") {
+        if((username!="") && (questions.length>0)) {
 
             document.getElementById('questionBox').style.width = "auto";
 
@@ -1121,7 +1121,11 @@ function showReview() {
 
     let lastNumber, firstNumber;
 
-    for(let x=0; x<10; x++) {
+    firstNumber=1;
+    lastNumber=10;
+
+    for(let x=0; x<((lastNumber>reviewQuestions.length)?reviewQuestions.length:10); x++) {
+
         var questionStatement = document.createElement('h3');
         questionStatement.setAttribute('class', 'questionStatement');
         var correctAnswer = document.createElement('p');
@@ -1160,8 +1164,8 @@ function showReview() {
 
     }
 
-    firstNumber=1;
-    lastNumber=10;
+    // firstNumber=1;
+    // lastNumber=10;
 
     var prevPage = document.createElement('button');
     prevPage.textContent = 'Previous';
@@ -1170,6 +1174,11 @@ function showReview() {
     var nextPage = document.createElement('button');
     nextPage.textContent = 'Next';
     nextPage.setAttribute('id', 'nextPage');
+
+    
+    if(reviewQuestions.length<=10) {
+        nextPage.style.display = "none";
+    }
 
     var scorePageBtn = document.createElement('button');
     scorePageBtn.textContent = 'View score';
@@ -1182,7 +1191,10 @@ function showReview() {
 
         document.getElementById('reviewBoxContent').textContent = '';
 
-        for(let x=0; x<10; x++) {
+        firstNumber = firstNumber + 10;
+        lastNumber = lastNumber + 10;
+
+        for(let x=0; x<((lastNumber>reviewQuestions.length)?(reviewQuestions.length%10):10); x++) {
             var questionStatement = document.createElement('h3');
             questionStatement.setAttribute('class', 'questionStatement');
             var correctAnswer = document.createElement('p');
@@ -1194,11 +1206,11 @@ function showReview() {
             explannation.innerHTML = "<i class='far fa-lightbulb'></i>"
             explannation.setAttribute('class', 'explannation');
 
-            questionStatement.textContent = reviewQuestions[lastNumber + x].qn;
-            yourAnswer.textContent = reviewQuestions[lastNumber + x].urAnswer;
-            correctAnswer.textContent = reviewQuestions[lastNumber + x].crctAnswer;
+            questionStatement.textContent = reviewQuestions[(lastNumber - 10) + x].qn;
+            yourAnswer.textContent = reviewQuestions[(lastNumber - 10) + x].urAnswer;
+            correctAnswer.textContent = reviewQuestions[(lastNumber - 10) + x].crctAnswer;
 
-            explannation.textContent += reviewQuestions[lastNumber + x].explannation;
+            explannation.textContent += reviewQuestions[(lastNumber - 10) + x].explannation;
 
             document.getElementById('reviewBoxContent').appendChild(questionStatement);
 
@@ -1222,9 +1234,6 @@ function showReview() {
 
         }
 
-        firstNumber = firstNumber + 10;
-        lastNumber = lastNumber + 10;
-
         if(lastNumber == questions.length) {
             nextPage.style.display = 'none';
 
@@ -1243,7 +1252,10 @@ function showReview() {
             
         document.getElementById('reviewBoxContent').textContent = '';
 
-        for(let x=0; x<10; x++) {
+        firstNumber = firstNumber - 10;
+        lastNumber = lastNumber - 10;
+
+        for(let x=0; x<((lastNumber>reviewQuestions.length)?(reviewQuestions.length%10):10); x++) {
             var questionStatement = document.createElement('h3');
             questionStatement.setAttribute('class', 'questionStatement');
             var correctAnswer = document.createElement('p');
@@ -1255,11 +1267,11 @@ function showReview() {
             explannation.innerHTML = "<i class='far fa-lightbulb'></i>"
             explannation.setAttribute('class', 'explannation');
 
-            questionStatement.textContent = reviewQuestions[(firstNumber-11) + x].qn;
-            yourAnswer.textContent = reviewQuestions[(firstNumber-11) + x].urAnswer;
-            correctAnswer.textContent = reviewQuestions[(firstNumber-11) + x].crctAnswer;
+            questionStatement.textContent = reviewQuestions[(firstNumber-21) + x].qn;
+            yourAnswer.textContent = reviewQuestions[(firstNumber-21) + x].urAnswer;
+            correctAnswer.textContent = reviewQuestions[(firstNumber-21) + x].crctAnswer;
 
-            explannation.textContent += reviewQuestions[(firstNumber-11) + x].explannation;
+            explannation.textContent += reviewQuestions[(firstNumber-21) + x].explannation;
 
             document.getElementById('reviewBoxContent').appendChild(questionStatement);
 
@@ -1283,16 +1295,13 @@ function showReview() {
 
         }
 
-        firstNumber = firstNumber - 10;
-        lastNumber = lastNumber - 10;
-
         if(firstNumber == 1) {
             prevPage.style.visibility = 'hidden';
         } else {
             prevPage.style.visibility = 'visible';
         }
 
-        scorePageBtn.style.display = 'none';
+        //scorePageBtn.style.display = 'none';
 
         nextPage.style.display = 'inline-block';
         nextPage.style.visibility = 'visible';

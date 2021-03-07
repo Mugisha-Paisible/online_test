@@ -1,11 +1,14 @@
 body{
-    overflow-x: hidden;
+    /* overflow-x: hidden; */
     user-select: none;
     font-family: sans-serif;
     min-height: 100vh;
     background-size: 100px 50px;
     margin: 0;
 }
+/* * {
+    outline: 1px solid red;
+} */
 body::-webkit-scrollbar-thumb {
     background-color: #266a92;
     border: 4px solid transparent;
@@ -187,9 +190,6 @@ body::-webkit-scrollbar {
 #reviewBtn {
     margin-left: 40%;
 }
-#scorePageBtn{
-    margin-left: 30%;
-}
 .correctAnswer, .yourAnswer {
     height: 5%;
     padding: 0.4%;
@@ -239,8 +239,10 @@ body::-webkit-scrollbar {
     font-family: "Times New Roman";
     display: inline-block;
     position: fixed;
-    top: -2%;
+    /* top: -2%; */
+    top: -6%;
     right: 4%;
+    margin-left: 30%;
 }
 
 hr {
@@ -388,9 +390,7 @@ hr {
     position: relative;
     left: 2%;
     top: -9.5%;
-    /* border: 1px solid black; */
-    /* height: 10%;
-    width: 10%; */
+    display: inline-block;
 }
 #headerPanel {
     border: 0px solid blue;
