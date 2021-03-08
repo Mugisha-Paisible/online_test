@@ -14,6 +14,10 @@ var randomQuestions;
 
 var questions = [];
 
+window.onbeforeunload = function() {
+    return "Data will be lost if you leave the page, are you sure?";
+};
+
 function init() {
 
     var xhttp = new XMLHttpRequest();
@@ -63,6 +67,8 @@ function init() {
     startQuiz.addEventListener("click", function(){
         //document.getElementById('onlineTest').style.visibility = "hidden";
         if((testId!="") && (questions.length>0)) {
+
+            document.getElementById('unattempted').textContent = questions.length;
 
             document.getElementById('questionBox').style.width = "auto";
 
