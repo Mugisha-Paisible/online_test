@@ -588,12 +588,14 @@ function endTest() {
 
     let heading = document.createElement("p");
     heading.setAttribute("id", "heading");
+    heading.setAttribute("class", "scorePagedetails");
     heading.textContent = "Test Over!";
 
     let instructions = document.createElement("p");
-    instructions.setAttribute("id", "instructions");
+    instructions.setAttribute("id", "scoreMsg");
+    instructions.setAttribute("class", "scorePagedetails");
     // instructions.textContent = "Hey! " + testId + " Your Score is " + Math.round((score/questions.length)*100) + "%";
-    instructions.textContent = "Hey! Your Score is " + Math.round((score/questions.length)*100) + "%";
+    instructions.innerHTML = "Hey! Your Score is <span id='scorePercent'>" + Math.round((score/questions.length)*100) + "%</span>";
 
     //adding test info to database
 
@@ -604,7 +606,8 @@ function endTest() {
 
     var xhttp = new XMLHttpRequest();
     // xhttp.open("POST", `https://onlinetestapplication.herokuapp.com/students/data/${testId}/${attNo}/${unattNo}/${flgNo}/${scorePercent}`, true);
-    xhttp.open("POST", "https://onlinetestapplication.herokuapp.com/students/data", true);
+    xhttp.open("POST", `https://localhost:3000/students/data/${testId}/${attNo}/${unattNo}/${flgNo}/${scorePercent}`, true);
+    //xhttp.open("POST", "https://onlinetestapplication.herokuapp.com/students/data", true);
     //xhttp.open("POST", "http://localhost:3000/students/data", true);
     xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
@@ -622,6 +625,8 @@ function endTest() {
     review.textContent = 'Review the test';
 
     var attStatus = document.createElement('p');
+    attStatus.setAttribute("id", 'attemptedStatus');
+    attStatus.setAttribute("class", "scorePagedetails");
     attStatus.textContent = 'ATTEMPTED: ' + document.getElementById('attempted').textContent;
 
     var unattStatus = document.createElement('p');
@@ -632,11 +637,11 @@ function endTest() {
 
     quiz.appendChild(heading);
 
-    quiz.appendChild(attStatus);
-    quiz.appendChild(unattStatus);
-    quiz.appendChild(flaggedStatus);
-
     quiz.appendChild(instructions);
+    quiz.appendChild(attStatus);
+    // quiz.appendChild(unattStatus);
+    // quiz.appendChild(flaggedStatus);
+
     quiz.appendChild(review);
 
     document.getElementById('noButton').style.display = 'none';
@@ -928,7 +933,7 @@ function showReview() {
 
         }
 
-        if(lastNumber == questions.length) {
+        if(lastNumber >= questions.length) {
             nextPage.style.display = 'none';
 
             scorePageBtn.style.display = 'inline-block';
@@ -946,10 +951,7 @@ function showReview() {
             
         document.getElementById('reviewBoxContent').textContent = '';
 
-        firstNumber = firstNumber - 10;
-        lastNumber = lastNumber - 10;
-
-        for(let x=0; x<((lastNumber>reviewQuestions.length)?(reviewQuestions.length%10):10); x++) {
+        for(let x=0; x<10; x++) {
             var questionStatement = document.createElement('h3');
             questionStatement.setAttribute('class', 'questionStatement');
             var correctAnswer = document.createElement('p');
@@ -961,11 +963,11 @@ function showReview() {
             explannation.innerHTML = "<i class='far fa-lightbulb'></i>"
             explannation.setAttribute('class', 'explannation');
 
-            questionStatement.textContent = reviewQuestions[(firstNumber-21) + x].qn;
-            yourAnswer.textContent = reviewQuestions[(firstNumber-21) + x].urAnswer;
-            correctAnswer.textContent = reviewQuestions[(firstNumber-21) + x].crctAnswer;
+            questionStatement.textContent = reviewQuestions[(firstNumber-11) + x].qn;
+            yourAnswer.textContent = reviewQuestions[(firstNumber-11) + x].urAnswer;
+            correctAnswer.textContent = reviewQuestions[(firstNumber-11) + x].crctAnswer;
 
-            explannation.textContent += reviewQuestions[(firstNumber-21) + x].explannation;
+            explannation.textContent += reviewQuestions[(firstNumber-11) + x].explannation;
 
             document.getElementById('reviewBoxContent').appendChild(questionStatement);
 
@@ -988,6 +990,9 @@ function showReview() {
             document.getElementById('reviewBoxContent').appendChild(explannation);
 
         }
+        
+        firstNumber = firstNumber - 10;
+        lastNumber = lastNumber - 10;
 
         if(firstNumber == 1) {
             prevPage.style.visibility = 'hidden';
