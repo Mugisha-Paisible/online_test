@@ -9,6 +9,7 @@ var cors = require('cors')
 app.use(cors())
 
 const questionRoutes = require('./routes/questions')
+const studentRoutes = require('./routes/students')
 
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())

@@ -286,6 +286,7 @@ hr {
     outline: none;
     margin-top: 15px;
     margin-left: 14px;
+    font-size: larger;
 }
 .sb{
     animation: sideanim ease-out 0.5s;
