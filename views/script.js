@@ -66,8 +66,7 @@ function init() {
 
     startQuiz.addEventListener("click", function(){
         //document.getElementById('onlineTest').style.visibility = "hidden";
-        alert(testIdInput.value);
-        if((testIdInput.value!="") && (questions.length>0) && isNaN(testIdInput.value))  {
+        if((testIdInput.value!="") && (questions.length>0) && !isNaN(testIdInput.value))  {
             
             document.getElementById('unattempted').textContent = questions.length;
 
