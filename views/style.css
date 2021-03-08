@@ -471,11 +471,12 @@ hr {
     display: inline;
 }
 footer {
-    position:fixed;
-    bottom: 1.6%;
-    left: 39%;
-    /* margin-top: 32%;
-    margin-left: 37.5%; */
+    /* position:fixed; */
+    /* bottom: 1.6%;
+    left: 39%; */
+    position: static;
+    margin-top: 32%;
+    margin-left: 37.5%;
     font-size: smaller;
     display: inline-block;
     opacity: 70%;
