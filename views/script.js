@@ -197,6 +197,8 @@ function showQuestion(i, randomQuestions) {
     document.getElementById('unattemptedIcon').style.visibility = "visible";
     document.getElementById('flaggedIcon').style.visibility = "visible";
 
+    document.getElementById('watermark').style.display = 'inline-block';
+
     clear();
     questionSecondElapsed = 0;
     currentQuestion = i;
@@ -570,12 +572,16 @@ function endTest() {
     clear();
 
     document.getElementById('reviewBoxContainer').style.display = 'none';
+    document.getElementById('watermark').style.display = 'none';
 
     document.getElementById('questionBox').style.display = 'block';
+    document.getElementById('questionBox').style.textAlign = 'center';
 
     //document.getElementById('logo').style.left = "41%";
     document.getElementById('questionBox').style.left = "48%";
     document.getElementById('questionBox').style.top = "25%";
+    document.getElementById('questionBox').style.width = "30%";
+
 
     document.getElementById('attemptedIcon').style.visibility = "hidden";
     document.getElementById('unattemptedIcon').style.visibility = "hidden";
@@ -586,24 +592,27 @@ function endTest() {
     var sidebar = document.getElementById("sidebar");
     sidebar.style.display = "none";
 
+    var tickIcon = document.createElement('div');
+    tickIcon.setAttribute('id', 'tickCircle');
+    tickIcon.innerHTML += "<span id='whiteTick'>&#x2713;</span>" 
+
     let heading = document.createElement("p");
     heading.setAttribute("id", "heading");
     heading.setAttribute("class", "scorePagedetails");
-    heading.textContent = "Test Over!";
+    heading.textContent = "Congratulations! You have completed the test.";
 
     let instructions = document.createElement("p");
     instructions.setAttribute("id", "scoreMsg");
     instructions.setAttribute("class", "scorePagedetails");
     // instructions.textContent = "Hey! " + testId + " Your Score is " + Math.round((score/questions.length)*100) + "%";
-    instructions.innerHTML = "Hey! Your Score is <span id='scorePercent'>" + Math.round((score/questions.length)*100) + "%</span>";
-
-    //adding test info to database
-
+    instructions.innerHTML = "Your Score is   <span id='scorePercent'>" + Math.round((score/questions.length)*100) + "%</span> (" + score + " Points)";
+ 
     var attNo = document.getElementById('attempted').textContent;
     var unattNo = document.getElementById('unattempted').textContent;
     var flgNo = document.getElementById('flagged').textContent;
     var scorePercent = Math.round((score/questions.length)*100);
 
+    //adding test info to database
     var xhttp = new XMLHttpRequest();
     // xhttp.open("POST", `https://onlinetestapplication.herokuapp.com/students/data/${testId}/${attNo}/${unattNo}/${flgNo}/${scorePercent}`, true);
     xhttp.open("POST", `https://localhost:3000/students/data/${testId}/${attNo}/${unattNo}/${flgNo}/${scorePercent}`, true);
@@ -635,6 +644,7 @@ function endTest() {
     var flaggedStatus = document.createElement('p');
     flaggedStatus.textContent = 'MARKED FOR REVIEW: ' + document.getElementById('flagged').textContent;
 
+    quiz.appendChild(tickIcon);
     quiz.appendChild(heading);
 
     quiz.appendChild(instructions);
@@ -661,7 +671,7 @@ function continueTest() {
     document.getElementById('unattemptedIcon').style.visibility = "visible";
     document.getElementById('flaggedIcon').style.visibility = "visible";
 
-    document.getElementById('questionBox').style.top = "10%";
+    document.getElementById('questionBox').style.top = "16%";
 
     document.getElementById('questionBox').style.width = "700px";
     showQuestion(currentQuestion-1, randomQuestions);
@@ -681,7 +691,7 @@ function endQuiz(){
     document.getElementById('unattemptedIcon').style.visibility = "hidden";
     document.getElementById('flaggedIcon').style.visibility = "hidden";
 
-    
+    document.getElementById('watermark').style.display = 'none';
 
     if(!((quizDuration - quizSecondElapsed) < 1)) {
 
