@@ -52,21 +52,29 @@ function init() {
     let testIdInput = document.createElement("input");
     testIdInput.setAttribute("id", "name");
     testIdInput.setAttribute("name", "name");
+
+    var invalidId = document.createElement('p');
+    invalidId.textContent = "Sorry, you entered an invalid test ID!";
+    invalidId.setAttribute('id', 'invalidId');
+
     let lb = document.createElement("br");
     quiz.appendChild(testIdLabel);
     quiz.appendChild(testIdInput);
+
     quiz.appendChild(lb);
     let startQuiz = document.createElement("button");
     startQuiz.setAttribute("id", "startQuiz");
     startQuiz.textContent = "START";
     quiz.appendChild(startQuiz);
 
+    quiz.appendChild(invalidId);
+
     testId = Math.round((Math.random())*1000000);
     testIdInput.value = testId;
 
     startQuiz.addEventListener("click", function(){
         //document.getElementById('onlineTest').style.visibility = "hidden";
-        if((testIdInput.value!="") && (questions.length>0) && !isNaN(testIdInput.value))  {
+        if((testIdInput.value!="") && (questions.length>0) && !isNaN(testIdInput.value) && (testIdInput.value.length == 6))  {
             
             document.getElementById('unattempted').textContent = questions.length;
 
@@ -81,6 +89,8 @@ function init() {
             sidebar(randomQuestions);
             startquiz(randomQuestions);
             
+        } else {
+            invalidId.style.visibility = 'visible';
         }
     })
 }
@@ -852,10 +862,18 @@ function showReview() {
         explannation.innerHTML = "<i class='far fa-lightbulb'></i>"
         explannation.setAttribute('class', 'explannation');
 
+        var correctTick = document.createElement('p');
+        correctTick.setAttribute('class', 'reviewIcon');
+        correctTick.innerHTML += '<br>&#10003;';
+
+        var wrong = document.createElement('p');
+        wrong.setAttribute('class', 'reviewIcon');
+        wrong.innerHTML += '<br>&#9888;';
+
         questionStatement.textContent = reviewQuestions[x].qn;
-        yourAnswer.textContent = reviewQuestions[x].urAnswer;
-        correctAnswer.textContent = reviewQuestions[x].crctAnswer;
-        explannation.innerHTML += reviewQuestions[x].explannation;
+        yourAnswer.innerHTML = reviewQuestions[x].urAnswer;
+        correctAnswer.innerHTML += reviewQuestions[x].crctAnswer;
+        explannation.innerHTML +=  reviewQuestions[x].explannation;
 
         document.getElementById('reviewBoxContent').appendChild(questionStatement);
 
@@ -865,14 +883,16 @@ function showReview() {
                 if(questions[y].number+')' == questionStatement.textContent.split(' ')[0]) {
 
                     if(!(questions[y].correct) && (yourAnswer.textContent != 'undefined')){
+                        document.getElementById('reviewBoxContent').appendChild(wrong);
                         document.getElementById('reviewBoxContent').appendChild(yourAnswer);
+
                     }
 
                 }
 
             }
         }
-
+        document.getElementById('reviewBoxContent').appendChild(correctTick);
         document.getElementById('reviewBoxContent').appendChild(correctAnswer);
 
         document.getElementById('reviewBoxContent').appendChild(explannation);
