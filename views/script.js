@@ -603,14 +603,18 @@ function endTest() {
     var scorePercent = Math.round((score/questions.length)*100);
 
     var xhttp = new XMLHttpRequest();
-    xhttp.open("POST", `https://onlinetestapplication.herokuapp.com/students/data/${testId}/${attNo}/${unattNo}/${flgNo}/${scorePercent}`, true);
+    // xhttp.open("POST", `https://onlinetestapplication.herokuapp.com/students/data/${testId}/${attNo}/${unattNo}/${flgNo}/${scorePercent}`, true);
+    xhttp.open("POST", "https://onlinetestapplication.herokuapp.com/students/data", true);
+    //xhttp.open("POST", "http://localhost:3000/students/data", true);
     xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-        // Response
+        
         var response = this.responseText;
     }
     };
-    xhttp.send();
+    //xhttp.send();
+    var data = {'testId':`${testId}`, 'attNo': `${attNo}`,'unattNo': `${unattNo}`, 'flgNo':`${flgNo}`, 'scorePercent':`${scorePercent}`};
+    xhttp.send(JSON.stringify(data));
 
     var review = document.createElement('button');
     review.setAttribute('id', 'reviewBtn');

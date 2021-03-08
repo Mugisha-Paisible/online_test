@@ -11,8 +11,11 @@ app.use(cors())
 const questionRoutes = require('./routes/questions')
 const studentRoutes = require('./routes/students')
 
-app.use(bodyParser.urlencoded({ extended: true }))
-app.use(bodyParser.json())
+// app.use(bodyParser.urlencoded({ extended: true }))
+// app.use(bodyParser.json())
+
+app.use( express.urlencoded({extended: true}))
+app.use(express.json())
 
 app.use(express.static(__dirname + '/views'));
 
@@ -21,6 +24,7 @@ app.get('/', async function (req, res) {
 })
 
 app.use('/questions', questionRoutes)
+app.use('/students', studentRoutes)
 
 // port
 app.listen(port, () => {
