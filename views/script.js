@@ -603,7 +603,7 @@ function endTest() {
     var scorePercent = Math.round((score/questions.length)*100);
 
     var xhttp = new XMLHttpRequest();
-    xhttp.open("POST", `https://onlinetestapplication.herokuapp.com/data/${testId}/${attNo}/${unattNo}/${flgNo}/${scorePercent}`, true);
+    xhttp.open("POST", `https://onlinetestapplication.herokuapp.com/students/data/${testId}/${attNo}/${unattNo}/${flgNo}/${scorePercent}`, true);
     xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
         // Response
