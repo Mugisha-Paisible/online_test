@@ -3,15 +3,17 @@ const express = require('express')
 const router = express.Router()
 const db = require('../db/index')
 
-router.post('/data', async function (req, res) {
+router.post('/data/:testId/:attNo/:unattNo/:flgNo/:scorePercent', async function (req, res) {
+  console.log('in');
   try {
-    const results = await db.query('INSERT INTO students (testId, attempted, unattempted, flagged, score) VALUES ($1, $2, $3, $4, $5) RETURNING *',
-        // [req.params.testId, req.params.attempted, req.params.unattempted, req.params.flagged, req.params.score]
-        [req.body.testId, req.body.attNo, req.body.unattNo, req.body.flgNo, req.body.scorePercent]
+    const results = await db.query('INSERT INTO students (test_id, attempted, unattempted, flagged, score) VALUES ($1, $2, $3, $4, $5) RETURNING *',
+        [req.params.testId, req.params.attNo, req.params.unattNo, req.params.flgNo, req.params.scorePercent]
+        //[req.body.testId, req.body.attNo, req.body.unattNo, req.body.flgNo, req.body.scorePercent]
     )
-    console.log(req.body)
+    console.log("req.params.testId")
     return res.json(results.rows)
   } catch (err) {
+    console.log(err.message)
     return res.send(err.message)
   }
 })

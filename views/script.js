@@ -630,19 +630,15 @@ function endTest() {
 
     //adding test info to database
     var xhttp = new XMLHttpRequest();
-    // xhttp.open("POST", `https://onlinetestapplication.herokuapp.com/students/data/${testId}/${attNo}/${unattNo}/${flgNo}/${scorePercent}`, true);
-    xhttp.open("POST", `https://localhost:3000/students/data/${testId}/${attNo}/${unattNo}/${flgNo}/${scorePercent}`, true);
-    //xhttp.open("POST", "https://onlinetestapplication.herokuapp.com/students/data", true);
-    //xhttp.open("POST", "http://localhost:3000/students/data", true);
+    xhttp.open("POST", `https://onlinetestapplication.herokuapp.com/students/data/${testId}/${attNo}/${unattNo}/${flgNo}/${scorePercent}`, true);
+    //xhttp.open("POST", `http://localhost:3000/students/data/${testId}/${attNo}/${unattNo}/${flgNo}/${scorePercent}`, true);
     xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
         
         var response = this.responseText;
     }
     };
-    //xhttp.send();
-    var data = {'testId':`${testId}`, 'attNo': `${attNo}`,'unattNo': `${unattNo}`, 'flgNo':`${flgNo}`, 'scorePercent':`${scorePercent}`};
-    xhttp.send(JSON.stringify(data));
+    xhttp.send();
 
     var review = document.createElement('button');
     review.setAttribute('id', 'reviewBtn');
