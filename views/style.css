@@ -427,9 +427,9 @@ hr {
 
 #logo {
     position: relative;
-    left: 2%;
+    left: 4%;
     /* top: -9.5%; */
-    top: 4%;
+    top: 1.5%;
     display: inline-block;
 }
 #watermark {
@@ -451,7 +451,7 @@ hr {
 }
 #headerPanel {
     border: 0px solid blue;
-    height: 12%;
+    height: 10%;
     width: 100%;
     position: absolute;
     top: 0%;
@@ -481,7 +481,7 @@ hr {
     font-size: smaller;
     opacity: 80%;
 }
-
-/* * {
+/* 
+* {
     outline: 1px solid red;
 } */
