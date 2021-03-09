@@ -202,7 +202,7 @@ body::-webkit-scrollbar {
 .correctAnswer, .yourAnswer {
     height: 5%;
     padding: 0.4%;
-    display: inline-block;
+    /* display: inline-block; */
 }
 .correctAnswer, .yourAnswer, .explannation {
     margin-left: 2%;
@@ -475,7 +475,7 @@ hr {
     font-size: smaller;
 }
 .reviewIcon {
-    display: inline;
+    /* display: inline; */
 }
 footer {
     position: fixed;

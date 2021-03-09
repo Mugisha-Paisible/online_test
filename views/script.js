@@ -844,6 +844,14 @@ function showReview() {
         }
     }
 
+    var correctTick = document.createElement('p');
+    correctTick.setAttribute('class', 'reviewIcon');
+    correctTick.innerHTML += '<span>&#10003;</span>';
+
+    var wrong = document.createElement('p');
+    wrong.setAttribute('class', 'reviewIcon');
+    wrong.innerHTML += '<span>&#9888;</span>';
+
     let lastNumber, firstNumber;
 
     firstNumber=1;
@@ -862,18 +870,10 @@ function showReview() {
         explannation.innerHTML = "<i class='far fa-lightbulb'></i>"
         explannation.setAttribute('class', 'explannation');
 
-        var correctTick = document.createElement('p');
-        correctTick.setAttribute('class', 'reviewIcon');
-        correctTick.innerHTML += '<br>&#10003;';
-
-        var wrong = document.createElement('p');
-        wrong.setAttribute('class', 'reviewIcon');
-        wrong.innerHTML += '<br>&#9888;';
-
         questionStatement.textContent = reviewQuestions[x].qn;
-        yourAnswer.innerHTML = reviewQuestions[x].urAnswer;
-        correctAnswer.innerHTML += reviewQuestions[x].crctAnswer;
-        explannation.innerHTML +=  reviewQuestions[x].explannation;
+        yourAnswer.textContent = reviewQuestions[x].urAnswer;
+        correctAnswer.textContent = reviewQuestions[x].crctAnswer;
+        explannation.textContent =  reviewQuestions[x].explannation;
 
         document.getElementById('reviewBoxContent').appendChild(questionStatement);
 
@@ -955,6 +955,7 @@ function showReview() {
                 if(questions[y].number+')' == questionStatement.textContent.split(' ')[0]) {
 
                     if(!(questions[y].correct) && (yourAnswer.textContent != 'undefined')){
+                        document.getElementById('reviewBoxContent').appendChild(wrong);
                         document.getElementById('reviewBoxContent').appendChild(yourAnswer);
                     }
 
@@ -962,7 +963,7 @@ function showReview() {
 
             }
         }
-
+            document.getElementById('reviewBoxContent').appendChild(correctTick);
             document.getElementById('reviewBoxContent').appendChild(correctAnswer);
 
             document.getElementById('reviewBoxContent').appendChild(explannation);
@@ -1013,6 +1014,7 @@ function showReview() {
                     if(questions[y].number+')' == questionStatement.textContent.split(' ')[0]) {
     
                         if(!(questions[y].correct) && (yourAnswer.textContent != 'undefined')){
+                            document.getElementById('reviewBoxContent').appendChild(wrong);
                             document.getElementById('reviewBoxContent').appendChild(yourAnswer);
                         }
     
@@ -1020,7 +1022,7 @@ function showReview() {
     
                 }
             }
-
+            document.getElementById('reviewBoxContent').appendChild(correctTick);
             document.getElementById('reviewBoxContent').appendChild(correctAnswer);
 
             document.getElementById('reviewBoxContent').appendChild(explannation);
