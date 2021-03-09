@@ -80,6 +80,7 @@ body::-webkit-scrollbar {
     z-index: 1;
     padding: 2rem;
     padding-top: 1rem;
+    padding-bottom: 0;
 
     /* background: url(bgImg3.png) no-repeat; */
     -webkit-background-size: cover;
@@ -427,7 +428,8 @@ hr {
 #logo {
     position: relative;
     left: 2%;
-    top: -9.5%;
+    /* top: -9.5%; */
+    top: 4%;
     display: inline-block;
 }
 #watermark {
@@ -449,7 +451,7 @@ hr {
 }
 #headerPanel {
     border: 0px solid blue;
-    height: 9%;
+    height: 12%;
     width: 100%;
     position: absolute;
     top: 0%;
@@ -474,19 +476,10 @@ hr {
     margin-left: 3%;
     font-size: smaller;
 }
-.reviewIcon {
-    /* display: inline; */
-}
-footer {
-    position: fixed;
-    bottom: 0;
-    /* bottom: 1.6%;
-    left: 39%; */
-    /* margin-top: 60%; */
-    margin-left: 37.5%;
+#copyright {
+    margin-left: 30%;
     font-size: smaller;
-    display: block;
-    opacity: 70%;
+    opacity: 80%;
 }
 
 /* * {
