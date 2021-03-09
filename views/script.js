@@ -69,7 +69,7 @@ function init() {
 
     quiz.appendChild(invalidId);
 
-    testId = Math.round((Math.random())*1000000);
+    testId = ('000000' + (Math.round((Math.random())*1000000))).slice(-6);
     testIdInput.value = testId;
 
     startQuiz.addEventListener("click", function(){
@@ -871,8 +871,8 @@ function showReview() {
         explannation.setAttribute('class', 'explannation');
 
         questionStatement.textContent = reviewQuestions[x].qn;
-        yourAnswer.innerHTML += '&#10003;' + reviewQuestions[x].urAnswer;
-        correctAnswer.innerHTML += '&#9888;' + reviewQuestions[x].crctAnswer;
+        yourAnswer.innerHTML += '&#9888;  ' + reviewQuestions[x].urAnswer;
+        correctAnswer.innerHTML += '&#10003;  ' + reviewQuestions[x].crctAnswer;
         explannation.innerHTML = reviewQuestions[x].explannation;
 
         document.getElementById('reviewBoxContent').appendChild(questionStatement);
@@ -881,8 +881,7 @@ function showReview() {
             if(questions[y].question == questionStatement.textContent.substr(questionStatement.textContent.indexOf(' ')+1)) {
 
                 if(questions[y].number+')' == questionStatement.textContent.split(' ')[0]) {
-
-                    if(!(questions[y].correct) && (yourAnswer.textContent != 'undefined')){
+                    if(!(questions[y].correct) && (yourAnswer.textContent.slice(3) != 'undefined')){
                         //document.getElementById('reviewBoxContent').appendChild(wrong);
                         document.getElementById('reviewBoxContent').appendChild(yourAnswer);
 
@@ -942,8 +941,8 @@ function showReview() {
             explannation.setAttribute('class', 'explannation');
 
             questionStatement.textContent = reviewQuestions[(lastNumber - 10) + x].qn;
-            yourAnswer.innerHTML += '&#10003;' + reviewQuestions[(lastNumber - 10) + x].urAnswer;
-            correctAnswer.innerHTML += '&#9888;' + reviewQuestions[(lastNumber - 10) + x].crctAnswer;
+            yourAnswer.innerHTML += '&#9888;  ' + reviewQuestions[(lastNumber - 10) + x].urAnswer;
+            correctAnswer.innerHTML += '&#10003;  ' + reviewQuestions[(lastNumber - 10) + x].crctAnswer;
 
             explannation.textContent += reviewQuestions[(lastNumber - 10) + x].explannation;
 
@@ -954,7 +953,7 @@ function showReview() {
 
                 if(questions[y].number+')' == questionStatement.textContent.split(' ')[0]) {
 
-                    if(!(questions[y].correct) && (yourAnswer.textContent != 'undefined')){
+                    if(!(questions[y].correct) && (yourAnswer.textContent.slice(3) != 'undefined')){
                         //document.getElementById('reviewBoxContent').appendChild(wrong);
                         document.getElementById('reviewBoxContent').appendChild(yourAnswer);
                     }
@@ -1001,8 +1000,8 @@ function showReview() {
             explannation.setAttribute('class', 'explannation');
 
             questionStatement.textContent = reviewQuestions[(firstNumber-11) + x].qn;
-            yourAnswer.innerHTML += '&#10003;' + reviewQuestions[(firstNumber-11) + x].urAnswer;
-            correctAnswer.textContentinnerHTML += '&#9888;' + reviewQuestions[(firstNumber-11) + x].crctAnswer;
+            yourAnswer.innerHTML += '&#9888;  ' + reviewQuestions[(firstNumber-11) + x].urAnswer;
+            correctAnswer.textContentinnerHTML += '&#10003;  ' + reviewQuestions[(firstNumber-11) + x].crctAnswer;
 
             explannation.textContent += reviewQuestions[(firstNumber-11) + x].explannation;
 
@@ -1013,7 +1012,7 @@ function showReview() {
     
                     if(questions[y].number+')' == questionStatement.textContent.split(' ')[0]) {
     
-                        if(!(questions[y].correct) && (yourAnswer.textContent != 'undefined')){
+                        if(!(questions[y].correct) && (yourAnswer.textContent.slice(3) != 'undefined')){
                             //document.getElementById('reviewBoxContent').appendChild(wrong);
                             document.getElementById('reviewBoxContent').appendChild(yourAnswer);
                         }
