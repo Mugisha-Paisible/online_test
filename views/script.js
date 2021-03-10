@@ -691,7 +691,7 @@ function continueTest() {
 function endQuiz(){
 
     //document.getElementById('logo').style.left = "41%";
-
+    document.getElementById('copyright').style.display = 'none';
     document.getElementById('questionBox').style.width = "50%";
     document.getElementById('questionBox').style.left = "50%";
 
