@@ -671,7 +671,7 @@ function endTest() {
 }
 
 function continueTest() {
-
+    document.getElementById('copyright').style.display = 'inline-block';
     //document.getElementById('logo').style.left = "32%";
     document.getElementById('questionBox').style.left = "550px";
 
