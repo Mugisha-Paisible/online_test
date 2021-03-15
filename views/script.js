@@ -192,7 +192,8 @@ function time() {
         if (s < 0) {
             quizTimer.style.visibility = "hidden";
         }
-        return (s - (s %= 60)) / 60 + (9 < s ? ':' : ':0') + s;
+        // return (s - (s %= 60)) / 60 + (9 < s ? 'min ' : 'min 0') + s + 's';
+        return (s - (s %= 60)) / 60 + (9 < s ? 'min ' : 'min 0') + s + 's';
     }
     let content = fmtMSS(s);
     quizTimer.textContent = content;
