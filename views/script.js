@@ -636,14 +636,14 @@ function endTest() {
 
     let heading = document.createElement("p");
     heading.setAttribute("id", "heading");
-    heading.setAttribute("class", "scorePagedetails");
+    // heading.setAttribute("class", "scorePagedetails");
     heading.textContent = "Congratulations! You have completed the test.";
 
     let instructions = document.createElement("p");
     instructions.setAttribute("id", "scoreMsg");
-    instructions.setAttribute("class", "scorePagedetails");
+    // instructions.setAttribute("class", "scorePagedetails");
     // instructions.textContent = "Hey! " + testId + " Your Score is " + Math.round((score/questions.length)*100) + "%";
-    instructions.innerHTML = "Your Score is   <span id='scorePercent'>" + Math.round((score / questions.length) * 100) + "%</span> (" + score + " Points)";
+    instructions.innerHTML = "Your Score is   <span id='scorePercent'>" + Math.round((score / questions.length) * 100) + "%</span>";
 
     var attNo = document.getElementById('attempted').textContent;
     var unattNo = document.getElementById('unattempted').textContent;
@@ -666,24 +666,31 @@ function endTest() {
     review.setAttribute('onclick', 'showReview()');
     review.textContent = 'Review the test';
 
+    var passPercentage = document.createElement('p');
+    passPercentage.setAttribute("class", "scorePagedetails");
+    passPercentage.textContent = "Passing percentage: 70%";
+
     var attStatus = document.createElement('p');
     attStatus.setAttribute("id", 'attemptedStatus');
     attStatus.setAttribute("class", "scorePagedetails");
-    attStatus.textContent = 'ATTEMPTED: ' + document.getElementById('attempted').textContent;
+    attStatus.textContent = 'Attempted: ' + document.getElementById('attempted').textContent;
 
     var unattStatus = document.createElement('p');
-    unattStatus.textContent = 'UNATTEMPTED: ' + document.getElementById('unattempted').textContent;
+    unattStatus.setAttribute("class", "scorePagedetails");
+    unattStatus.textContent = 'Unattempted: ' + document.getElementById('unattempted').textContent;
 
     var flaggedStatus = document.createElement('p');
-    flaggedStatus.textContent = 'MARKED FOR REVIEW: ' + document.getElementById('flagged').textContent;
+    flaggedStatus.setAttribute("class", "scorePagedetails");
+    flaggedStatus.textContent = 'Marked for review: ' + document.getElementById('flagged').textContent;
 
     quiz.appendChild(tickIcon);
     quiz.appendChild(heading);
 
     quiz.appendChild(instructions);
+    quiz.appendChild(passPercentage);
     quiz.appendChild(attStatus);
-    // quiz.appendChild(unattStatus);
-    // quiz.appendChild(flaggedStatus);
+    quiz.appendChild(unattStatus);
+    quiz.appendChild(flaggedStatus);
 
     quiz.appendChild(review);
 

@@ -506,7 +506,7 @@ hr {
     display: none;
     position: relative;
     top: 10%;
-    left: 32%;
+    left: 26%;
     opacity: 10%;
     font-size: 500%;
     /* width: 30%;
@@ -548,6 +548,13 @@ hr {
     padding: 0%;
     margin-left: 3%;
     font-size: smaller;
+}
+.scorePagedetails {
+    border: 1px solid black;
+    text-align: center;
+    /* padding-right: 6%; */
+    margin-left: 28%;
+    width: 45%;
 }
 #copyright {
     margin-left: 30%;
