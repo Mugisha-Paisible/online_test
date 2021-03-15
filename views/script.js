@@ -30,6 +30,9 @@ function init() {
     xhttp.open("GET", "https://onlinetestapplication.herokuapp.com/questions", true);
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
+
+            console.log(JSON.parse(this.responseText).length);
+
             for (var count = 0; count < JSON.parse(this.responseText).length; count++) {
                 questions.push(JSON.parse(this.responseText)[count]);
             }
@@ -893,9 +896,6 @@ function showReview() {
 
     }
 
-    // firstNumber=1;
-    // lastNumber=10;
-
     var prevPage = document.createElement('button');
     prevPage.textContent = 'Previous';
     prevPage.setAttribute('id', 'prevPage');
@@ -970,11 +970,12 @@ function showReview() {
             scorePageBtn.style.display = 'inline-block';
 
         } else if (lastNumber < questions.length) {
-            nextPage.style.visibility = 'visible';
+            //nextPage.style.visibility = 'visible';
             nextPage.textContent = 'Next';
         }
 
-        prevPage.style.visibility = 'visible';
+        //prevPage.style.visibility = 'visible';
+        prevPage.style.display = 'inline-block';
 
     });
 
@@ -996,7 +997,7 @@ function showReview() {
 
             questionStatement.textContent = reviewQuestions[(firstNumber - 11) + x].qn;
             yourAnswer.innerHTML += '&#9888;  ' + reviewQuestions[(firstNumber - 11) + x].urAnswer;
-            correctAnswer.textContentinnerHTML += '&#10003;  ' + reviewQuestions[(firstNumber - 11) + x].crctAnswer;
+            correctAnswer.innerHTML += '&#10003;  ' + reviewQuestions[(firstNumber - 11) + x].crctAnswer;
 
             explannation.textContent += reviewQuestions[(firstNumber - 11) + x].explannation;
 
@@ -1020,24 +1021,25 @@ function showReview() {
             document.getElementById('reviewBoxContent').appendChild(correctAnswer);
 
             document.getElementById('reviewBoxContent').appendChild(explannation);
-
+            
         }
 
         firstNumber = firstNumber - 10;
         lastNumber = lastNumber - 10;
 
         if (firstNumber == 1) {
-            prevPage.style.visibility = 'hidden';
+            // prevPage.style.visibility = 'hidden';
+            prevPage.style.display = 'none';
         } else {
-            prevPage.style.visibility = 'visible';
+            // prevPage.style.visibility = 'visible';
+            prevPage.style.display = 'inline-block';
         }
 
         //scorePageBtn.style.display = 'none';
 
         nextPage.style.display = 'inline-block';
-        nextPage.style.visibility = 'visible';
+        //nextPage.style.visibility = 'visible';
         nextPage.textContent = 'Next';
-
     });
 
     document.getElementById('reviewBoxContainer').appendChild(prevPage);

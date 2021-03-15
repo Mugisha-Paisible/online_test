@@ -197,9 +197,6 @@ body::-webkit-scrollbar {
     transition: 0.3s;
     margin-top: 7%;
 }
-#reviewBtn {
-    /* margin-left: 40%; */
-}
 .correctAnswer, .yourAnswer {
     height: 5%;
     padding: 0.4%;
@@ -221,9 +218,6 @@ body::-webkit-scrollbar {
     padding: 1%;
     border-radius: 5px;
 }
-.scorePageDetails {
-    /* margin-left: 30%; */
-}
 .questionStatement {
     font-size: medium;
     margin-top: 5%;
@@ -242,11 +236,13 @@ body::-webkit-scrollbar {
     color: white;
 }
 
-#prevPage, #nextPage {
-    margin-left: 30%;
+#nextPage {
+    margin-left: 70%;
 }
 #prevPage {
-    visibility: hidden;
+    margin-left: 8%;
+    /* visibility: hidden; */
+    display: none;
 }
 
 #scorePageBtn {
@@ -460,12 +456,16 @@ hr {
 }
 #qnNo, #qnStmt {
     float: left;
+    display: inline;
 }
 #qnNo {
-    width: 7%;
+    width: 8%;
+    margin-right: 1%;
 }
 #qnStmt {
-    width: 92%;
+    clear: right;
+    margin: auto;
+    width: 90.5%;
     margin-bottom: 5%;
     font-size: smaller;
 }
