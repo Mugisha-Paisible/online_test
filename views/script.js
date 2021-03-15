@@ -193,7 +193,17 @@ function time() {
             quizTimer.style.visibility = "hidden";
         }
         // return (s - (s %= 60)) / 60 + (9 < s ? 'min ' : 'min 0') + s + 's';
-        return (s - (s %= 60)) / 60 + (9 < s ? 'min ' : 'min 0') + s + 's';
+
+        var sec_num = parseInt(s, 10)
+        var hours = Math.floor(sec_num / 3600)
+        var minutes = Math.floor(sec_num / 60) % 60
+        var seconds = sec_num % 60
+
+        return [hours, minutes, seconds]
+            .map(v => v < 10 ? "0" + v : v)
+            .filter((v, i) => v !== "00" || i > 0)
+            .join(":")
+
     }
     let content = fmtMSS(s);
     quizTimer.textContent = content;
@@ -1022,7 +1032,7 @@ function showReview() {
             document.getElementById('reviewBoxContent').appendChild(correctAnswer);
 
             document.getElementById('reviewBoxContent').appendChild(explannation);
-            
+
         }
 
         firstNumber = firstNumber - 10;
