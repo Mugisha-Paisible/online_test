@@ -14,37 +14,30 @@
             }
         });
         function stopPrntScr() {
+
             var inpFld = document.createElement("input");
-            inpFld.setAttribute("value", "print screen disabled!");
+            inpFld.setAttribute("value", ".");
+            inpFld.setAttribute("width", "0");
+            inpFld.style.height = "0px";
+            inpFld.style.width = "0px";
+            inpFld.style.border = "0px";
             document.body.appendChild(inpFld);
             inpFld.select();
             document.execCommand("copy");
-            document.body.removeChild(inpFld);
-            //inpFld.remove(inpFld);
-            alert(inpFld.value);
+            inpFld.remove(inpFld);
         }
-        // function AccessClipboardData() {
-        //     try {
-                
-        //     } catch (err) {
-        //     }
-        // }
-        // setInterval("AccessClipboardData()", 1);
-    </script>
-    <!-- <style type="text/css" media="print">
-        body {visibility: hidden; display: none;}
-    </style> -->
-    <style>
-        @media print {
-            body {
-                display: none;
-                /* this code will hide whole pages */
+        function AccessClipboardData() {
+            try {
+                navigator.clipboard.writeText("Access   Restricted");
+            } catch (err) {
+                console.log(err);
             }
         }
-    </style>
+        setInterval("AccessClipboardData()", 300);
+    </script>
 </head>
 
-<body oncopy="return false" onpopstate="return false" onbeforeprint="abortPrint()">
+<body oncopy="return false" onpopstate="return false">
 
     <!-- <div> -->
 

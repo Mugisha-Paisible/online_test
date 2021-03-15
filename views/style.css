@@ -416,6 +416,7 @@ hr {
 .confButton {
     margin-left: 39%;
     display: none;
+    margin-bottom: 2%;
 }
 #noButton {
     margin-left: 5%;

@@ -28,13 +28,11 @@ function init() {
 
     var xhttp = new XMLHttpRequest();
     xhttp.open("GET", "https://onlinetestapplication.herokuapp.com/questions", true);
-    //xhttp.open("GET", "http://localhost:3000/questions", true);
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             for (var count = 0; count < JSON.parse(this.responseText).length; count++) {
                 questions.push(JSON.parse(this.responseText)[count]);
             }
-
             for (var count = 0; count < questions.length; count++) {
                 questions[count].choices = [questions[count].choiceOne, questions[count].choiceTwo, questions[count].choiceThree, questions[count].choiceFour];
                 questions[count].answer = [questions[count].answerText];
@@ -78,14 +76,11 @@ function init() {
     testIdInput.value = testId;
 
     startQuiz.addEventListener("click", function () {
-        //document.getElementById('onlineTest').style.visibility = "hidden";
         if ((testIdInput.value != "") && (questions.length > 0) && !isNaN(testIdInput.value) && (testIdInput.value.length == 6)) {
 
             document.getElementById('unattempted').textContent = questions.length;
 
             document.getElementById('questionBox').style.width = "auto";
-
-            //document.getElementById('logo').style.left = "32%";
 
             document.getElementById('questionBox').style.left = "550px";
             document.getElementById("instr").style.display = "none";
