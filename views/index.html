@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="/style.css">
 
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Public+Sans&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Karla:wght@200&family=Public+Sans&display=swap');
     </style>
 
     <script>
@@ -55,25 +55,33 @@
     <div class="header">
         <!-- <center><h1 id='onlineTest' style="font-size: 3rem;	font-weight: 200;margin-top: 0; width: fit-content;padding: 5px;">ONLINE TEST</h1></center> -->
         <table id="status" class='statusBox' style="visibility: hidden; font-size: 18px;">
+            <tr><td colspan="2" id="statusTitle" style="font-size: medium;">LEGEND</td></tr>
             <tr>
-                <div id='attemptedIcon' class='icons'></div>
+                <td><p id='attemptedIcon' class='icons'></p></td>
                 <td class='statusPanel' id='att'>ATTEMPTED </td>
-                <td><span id='attempted' class='count'></span></td>
             </tr>
             <tr>
-                <div id='unattemptedIcon' class='icons'></div>
+                <td><p id='unattemptedIcon' class='icons'></p></td>
                 <td class='statusPanel' id='unatt'>UNATTEMPTED </td>
-                <td><span id="unattempted" class='count'></span></td>
             </tr>
             <tr>
-                <div id='flaggedIcon' class='icons'></div>
-                <td class='statusPanel' id='flgd'>MARKED FOR REVIEW </td>
-                <td><span id="flagged" class='count'></span></td>
+                <td><p id='flaggedIcon' class='icons'></p></td>
+                <td class='statusPanel' id='flgd'>REVIEW </td>
             </tr>
         </table>
+
+        <div id="statusNos" class='statusNoBox'>
+            <div class='count'><div id='attempted'></div><p id='attQn' class='statusLabel'>ATTEMPTED</p></div>
+            
+            <div class='count'><div id='unattempted'></div><p id='unattQn' class='statusLabel'>UNATTEMPTED</p></div>
+            
+            <div class='count'><div id='flagged'></div><p id='unattQn' class='statusLabel'>FLAGGED</p></div>
+            
+        </div>
+        
         <table id="timer" style="visibility: hidden; font-size: 1.5rem;">
             <tr>
-                <td>Time left : </td>
+                <td style="font-size: medium; font-weight: lighter;">Time left : </td>
                 <td><span id="quizTimer"></span></td>
             </tr>
             <tr>

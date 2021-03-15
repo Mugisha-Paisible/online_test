@@ -81,11 +81,13 @@ function init() {
     startQuiz.addEventListener("click", function () {
         if ((testIdInput.value != "") && (questions.length > 0) && !isNaN(testIdInput.value) && (testIdInput.value.length == 6)) {
 
+            questions = questions.slice(0, 180);
+
             document.getElementById('unattempted').textContent = questions.length;
 
             document.getElementById('questionBox').style.width = "auto";
 
-            document.getElementById('questionBox').style.left = "550px";
+            document.getElementById('questionBox').style.left = "500px";
             document.getElementById("instr").style.display = "none";
             document.getElementById("instructions").style.display = "none";
             randomQuestions = rQuestions(questions);
@@ -144,6 +146,9 @@ function startquiz(randomQuestions) {
 
     timerTable.style.visibility = "visible";
     document.getElementById('status').style.visibility = "visible";
+
+    document.getElementById('statusNos').style.visibility = "visible"
+
     document.getElementById('score').style.visibility = "hidden";
     quizDuration = questions.length * 60;
 
@@ -194,7 +199,7 @@ function time() {
         }
         // return (s - (s %= 60)) / 60 + (9 < s ? 'min ' : 'min 0') + s + 's';
 
-        var sec_num = parseInt(s, 10)
+        var sec_num = parseInt(s, 10) - (30*60)
         var hours = Math.floor(sec_num / 3600)
         var minutes = Math.floor(sec_num / 60) % 60
         var seconds = sec_num % 60
@@ -277,13 +282,13 @@ function showQuestion(i, randomQuestions) {
 
         let optionNo = j + 1;
         if (optionNo == 1) {
-            label.textContent += ' a. ' + randomQuestions[i].choices[j];
+            label.textContent += ' A. ' + randomQuestions[i].choices[j];
         } else if (optionNo == 2) {
-            label.textContent += ' b. ' + randomQuestions[i].choices[j];
+            label.textContent += ' B. ' + randomQuestions[i].choices[j];
         } else if (optionNo == 3) {
-            label.textContent += ' c. ' + randomQuestions[i].choices[j];
+            label.textContent += ' C. ' + randomQuestions[i].choices[j];
         } else {
-            label.textContent += ' d. ' + randomQuestions[i].choices[j];
+            label.textContent += ' D. ' + randomQuestions[i].choices[j];
         }
         // label.textContent += randomQuestions[i].choices[j];
         if (randomQuestions[i].marked && randomQuestions[i].answer == randomQuestions[i].choices[j]) {
@@ -608,7 +613,7 @@ function endTest() {
     document.getElementById('questionBox').style.textAlign = 'center';
 
     //document.getElementById('logo').style.left = "41%";
-    document.getElementById('questionBox').style.left = "48%";
+    document.getElementById('questionBox').style.left = "50%";
     document.getElementById('questionBox').style.top = "25%";
     document.getElementById('questionBox').style.width = "30%";
 
@@ -619,6 +624,9 @@ function endTest() {
 
     timerTable.style.visibility = "hidden";
     document.getElementById('status').style.visibility = "hidden";
+
+    document.getElementById('statusNos').style.visibility = "hidden";
+
     var sidebar = document.getElementById("sidebar");
     sidebar.style.display = "none";
 
@@ -687,11 +695,14 @@ function endTest() {
 function continueTest() {
     document.getElementById('copyright').style.display = 'inline-block';
     //document.getElementById('logo').style.left = "32%";
-    document.getElementById('questionBox').style.left = "550px";
+    document.getElementById('questionBox').style.left = "500px";
 
     document.getElementById('sidebar').style.visibility = 'visible';
     document.getElementById('timer').style.visibility = 'visible';
     document.getElementById('status').style.visibility = 'visible';
+
+    document.getElementById('statusNos').style.visibility = "visible";
+
     document.getElementById('attemptedIcon').style.visibility = "visible";
     document.getElementById('unattemptedIcon').style.visibility = "visible";
     document.getElementById('flaggedIcon').style.visibility = "visible";
@@ -712,6 +723,9 @@ function endQuiz() {
     document.getElementById('sidebar').style.visibility = 'hidden';
     document.getElementById('timer').style.visibility = 'hidden';
     document.getElementById('status').style.visibility = 'hidden';
+
+    document.getElementById('statusNos').style.visibility = "hidden";
+
     document.getElementById('attemptedIcon').style.visibility = "hidden";
     document.getElementById('unattemptedIcon').style.visibility = "hidden";
     document.getElementById('flaggedIcon').style.visibility = "hidden";
