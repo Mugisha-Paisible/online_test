@@ -75,13 +75,70 @@ function init() {
 
     quiz.appendChild(invalidId);
 
-    testId = ('000000' + (Math.round((Math.random()) * 1000000))).slice(-6);
-    testIdInput.value = testId;
+    // testId = ('000000' + (Math.round((Math.random()) * 1000000))).slice(-6);
+    // testIdInput.value = testId;
+
+    var regStudents = [];
+
+    var xhttp = new XMLHttpRequest();
+    // xhttp.open("GET", "https://onlinetestapplication.herokuapp.com/registered_students", true);
+    xhttp.open("GET", "http://localhost:3000/registeredStudents/all", true);
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+
+            //console.log(JSON.parse(this.responseText));
+
+            for (var count = 0; count < JSON.parse(this.responseText).length; count++) {
+                regStudents.push(JSON.parse(this.responseText)[count]);
+            }
+            console.log(regStudents);
+        }
+    };
+    xhttp.send();
 
     startQuiz.addEventListener("click", function () {
-        if ((testIdInput.value != "") && (questions.length > 0) && !isNaN(testIdInput.value) && (testIdInput.value.length == 6)) {
+        var registered = false;
+        var testTimes = false;
 
-            questions = questions.slice(0, 180);
+        var timesTaken;
+
+        if (regStudents.length > 0) {
+
+            for (var count = 0; count < regStudents.length; count++) {
+
+                if (regStudents[count]['test_id'] == testIdInput.value) {
+                    registered = true;
+                    if (regStudents[count]['times_taken'] < 3) {
+                        testTimes = true;
+                    }
+                    timesTaken = regStudents[count]['times_taken'];
+                }
+
+            }
+
+        }
+
+
+
+
+        if ((testIdInput.value != "") && (questions.length > 0) && !isNaN(testIdInput.value) && (testIdInput.value.length == 6) && registered && testTimes) {
+
+            timesTaken++;
+
+            document.getElementById('headerPanel').style.height = '68px';
+
+            var xhttp = new XMLHttpRequest();
+            // xhttp.open("POST", `https://onlinetestapplication.herokuapp.com/students/data/${testId}/${attNo}/${unattNo}/${flgNo}/${scorePercent}`, true);
+            xhttp.open("POST", `http://localhost:3000/registeredStudents/testTimes/${timesTaken}/${testIdInput.value}`, true);
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    var response = this.responseText;
+                }
+            };
+            xhttp.send();
+
+            // questions = questions.slice(0, 180);
+            questions = questions.slice(0, 15);
 
             document.getElementById('unattempted').textContent = questions.length;
 
@@ -95,6 +152,9 @@ function init() {
             startquiz(randomQuestions);
 
         } else {
+            if(!testTimes) {
+                invalidId.textContent = 'Maximum attempts reached!';
+            }
             invalidId.style.visibility = 'visible';
         }
     })
@@ -199,7 +259,7 @@ function time() {
         }
         // return (s - (s %= 60)) / 60 + (9 < s ? 'min ' : 'min 0') + s + 's';
 
-        var sec_num = parseInt(s, 10) - (30*60)
+        var sec_num = parseInt(s, 10)
         var hours = Math.floor(sec_num / 3600)
         var minutes = Math.floor(sec_num / 60) % 60
         var seconds = sec_num % 60
@@ -614,7 +674,7 @@ function endTest() {
 
     //document.getElementById('logo').style.left = "41%";
     document.getElementById('questionBox').style.left = "50%";
-    document.getElementById('questionBox').style.top = "25%";
+    document.getElementById('questionBox').style.top = "18%";
     document.getElementById('questionBox').style.width = "30%";
 
 
@@ -668,7 +728,7 @@ function endTest() {
 
     var passPercentage = document.createElement('p');
     passPercentage.setAttribute("class", "scorePagedetails");
-    passPercentage.textContent = "Passing percentage: 70%";
+    passPercentage.textContent = "Passing percentage: 75%";
 
     var attStatus = document.createElement('p');
     attStatus.setAttribute("id", 'attemptedStatus');
@@ -700,7 +760,10 @@ function endTest() {
 }
 
 function continueTest() {
-    document.getElementById('copyright').style.display = 'inline-block';
+
+    document.getElementById('headerPanel').style.height = '68px';
+
+    document.getElementById('copyrt').style.display = 'inline-block';
     //document.getElementById('logo').style.left = "32%";
     document.getElementById('questionBox').style.left = "500px";
 
@@ -714,16 +777,13 @@ function continueTest() {
     document.getElementById('unattemptedIcon').style.visibility = "visible";
     document.getElementById('flaggedIcon').style.visibility = "visible";
 
-    document.getElementById('questionBox').style.top = "16%";
+    document.getElementById('questionBox').style.top = "12%";
 
     document.getElementById('questionBox').style.width = "700px";
     showQuestion(currentQuestion - 1, randomQuestions);
 }
 
 function endQuiz() {
-
-    //document.getElementById('logo').style.left = "41%";
-    document.getElementById('copyright').style.display = 'none';
     document.getElementById('questionBox').style.width = "50%";
     document.getElementById('questionBox').style.left = "50%";
 
@@ -743,7 +803,10 @@ function endQuiz() {
 
         document.getElementById('hr').style.display = 'none';
 
-        document.getElementById('questionBox').style.top = '200px';
+        document.getElementById('headerPanel').style.height = '68px';
+
+        // document.getElementById('questionBox').style.top = '200px';
+        document.getElementById('questionBox').style.top = '24%';
 
         let confirmationMessage = document.createElement('h2');
         confirmationMessage.setAttribute("id", "confMsg");
@@ -778,6 +841,11 @@ function endQuiz() {
 }
 
 function showReview() {
+
+    document.getElementById('copyrt').style.display = 'none';
+
+    document.getElementById('headerPanel').style.top = '0px';
+    document.getElementById('headerPanel').style.height = '68px';
 
     document.getElementById('reviewBoxContainer').style.display = 'block';
 
@@ -945,8 +1013,6 @@ function showReview() {
     scorePageBtn.textContent = 'View score';
     scorePageBtn.setAttribute('id', 'scorePageBtn');
     scorePageBtn.addEventListener('click', endTest);
-
-    //document.getElementById('headerPanel').appendChild(scorePageBtn);
 
     nextPage.addEventListener('click', function nextFunction() {
 

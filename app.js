@@ -9,7 +9,8 @@ var cors = require('cors')
 app.use(cors())
 
 const questionRoutes = require('./routes/questions')
-const studentRoutes = require('./routes/students')
+const studentRoutes = require('./routes/test_details')
+const registeredStudentsRoutes = require('./routes/registered_students.js')
 
 app.use( express.urlencoded({extended: true}))
 app.use(express.json())
@@ -21,7 +22,8 @@ app.get('/', async function (req, res) {
 })
 
 app.use('/questions', questionRoutes)
-app.use('/students', studentRoutes)
+app.use('/test_details', studentRoutes)
+app.use('/registeredStudents', registeredStudentsRoutes)
 
 // port
 app.listen(port, () => {

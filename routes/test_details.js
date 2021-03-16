@@ -4,7 +4,6 @@ const router = express.Router()
 const db = require('../db/index')
 
 router.post('/data/:testId/:attNo/:unattNo/:flgNo/:scorePercent', async function (req, res) {
-  console.log('in');
   try {
     const results = await db.query('INSERT INTO students (test_id, attempted, unattempted, flagged, score) VALUES ($1, $2, $3, $4, $5) RETURNING *',
         [req.params.testId, req.params.attNo, req.params.unattNo, req.params.flgNo, req.params.scorePercent]
@@ -20,7 +19,7 @@ router.post('/data/:testId/:attNo/:unattNo/:flgNo/:scorePercent', async function
 
 router.get('/all', async function (req, res) {
   try {
-    const results = await db.query('SELECT * FROM students')
+    const results = await db.query('SELECT * FROM test_details')
     return res.json(results.rows)
   } catch (err) {
     return res.send(err.message)
