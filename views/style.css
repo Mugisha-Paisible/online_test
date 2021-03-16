@@ -6,7 +6,7 @@ body{
     background-size: 100px 50px;
     margin: 0;
     position: relative;
-
+    padding-bottom: 2%;
 }
 body::-webkit-scrollbar-thumb {
     background-color: #e0e6e0;
