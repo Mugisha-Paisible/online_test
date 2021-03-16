@@ -81,8 +81,8 @@ function init() {
     var regStudents = [];
 
     var xhttp = new XMLHttpRequest();
-    // xhttp.open("GET", "https://onlinetestapplication.herokuapp.com/registered_students", true);
-    xhttp.open("GET", "http://localhost:3000/registeredStudents/all", true);
+    xhttp.open("GET", "https://onlinetestapplication.herokuapp.com/registeredStudents/all", true);
+    //xhttp.open("GET", "http://localhost:3000/registeredStudents/all", true);
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
 
@@ -128,8 +128,8 @@ function init() {
             document.getElementById('headerPanel').style.height = '68px';
 
             var xhttp = new XMLHttpRequest();
-            // xhttp.open("POST", `https://onlinetestapplication.herokuapp.com/students/data/${testId}/${attNo}/${unattNo}/${flgNo}/${scorePercent}`, true);
-            xhttp.open("POST", `http://localhost:3000/registeredStudents/testTimes/${timesTaken}/${testIdInput.value}`, true);
+            xhttp.open("POST", `https://onlinetestapplication.herokuapp.com/registeredStudents/testTimes/${timesTaken}/${testIdInput.value}`, true);
+            //xhttp.open("POST", `http://localhost:3000/registeredStudents/testTimes/${timesTaken}/${testIdInput.value}`, true);
             xhttp.onreadystatechange = function () {
                 if (this.readyState == 4 && this.status == 200) {
                     var response = this.responseText;
