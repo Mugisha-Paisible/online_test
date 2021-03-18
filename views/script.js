@@ -85,13 +85,9 @@ function init() {
     //xhttp.open("GET", "http://localhost:3000/registeredStudents/all", true);
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
-
-            //console.log(JSON.parse(this.responseText));
-
             for (var count = 0; count < JSON.parse(this.responseText).length; count++) {
                 regStudents.push(JSON.parse(this.responseText)[count]);
             }
-            console.log(regStudents);
         }
     };
     xhttp.send();
@@ -122,6 +118,8 @@ function init() {
 
 
         if ((testIdInput.value != "") && (questions.length > 0) && !isNaN(testIdInput.value) && (testIdInput.value.length == 6) && registered && testTimes) {
+            
+            testId = testIdInput.value;
 
             timesTaken++;
 
@@ -712,8 +710,8 @@ function endTest() {
 
     //adding test info to database
     var xhttp = new XMLHttpRequest();
-    xhttp.open("POST", `https://onlinetestapplication.herokuapp.com/students/data/${testId}/${attNo}/${unattNo}/${flgNo}/${scorePercent}`, true);
-    //xhttp.open("POST", `http://localhost:3000/students/data/${testId}/${attNo}/${unattNo}/${flgNo}/${scorePercent}`, true);
+    //xhttp.open("POST", `https://onlinetestapplication.herokuapp.com/test_details/data/${testId}/${attNo}/${unattNo}/${flgNo}/${scorePercent}`, true);
+    xhttp.open("POST", `http://localhost:3000/test_details/data/${testId}/${attNo}/${unattNo}/${flgNo}/${scorePercent}`, true);
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             var response = this.responseText;
