@@ -526,6 +526,10 @@ hr {
     -o-transform: rotate(-25deg);
     transform: rotate(-25deg);
 }
+#pmp {
+    font-size: xx-large;
+    vertical-align: middle;
+}
 #headerPanel {
     /* border: 2px solid blue; */
     height: 68px;
@@ -533,6 +537,9 @@ hr {
     position: absolute;
     top: 0%;
     box-shadow: 0 0 10px;
+
+    text-align: center;
+    padding-top: 1%;
 }
 #qnNo, #qnStmt {
     float: left;

@@ -54,7 +54,7 @@ function init() {
     let testIdLabel = document.createElement("label");
     testIdLabel.setAttribute("for", "name");
     testIdLabel.setAttribute("id", "name");
-    testIdLabel.textContent = "Enter test ID : ";
+    testIdLabel.textContent = "Enter Test ID : ";
     let testIdInput = document.createElement("input");
     testIdInput.setAttribute("id", "name");
     testIdInput.setAttribute("name", "name");
@@ -97,6 +97,7 @@ function init() {
         var testTimes = false;
 
         var timesTaken;
+        var dateTaken;
 
         if (regStudents.length > 0) {
 
@@ -108,6 +109,7 @@ function init() {
                         testTimes = true;
                     }
                     timesTaken = regStudents[count]['times_taken'];
+                    dateTaken = regStudents[count]['date_time'];
                 }
 
             }
@@ -118,36 +120,62 @@ function init() {
 
 
         if ((testIdInput.value != "") && (questions.length > 0) && !isNaN(testIdInput.value) && (testIdInput.value.length == 6) && registered && testTimes) {
+
+            var hrsMin = ('0' + (new Date).getHours()).slice(-2) +':'+ ('0' + (new Date).getMinutes()).slice(-2);
+
+            var timeDiff = (((parseInt(hrsMin.slice(0, 2)))*60) + ((parseInt(hrsMin.slice(3, 5))))) - (((parseInt(dateTaken.slice(0, 2)))*60) + ((parseInt(dateTaken.slice(3, 5))))) ;
             
-            testId = testIdInput.value;
+            if(timeDiff<60 || `${dateTaken}`=='00:00'){
+                
+                testId = testIdInput.value;
 
-            timesTaken++;
+                timesTaken++;
 
-            document.getElementById('headerPanel').style.height = '68px';
+                document.getElementById('headerPanel').style.height = '68px';
+                
+                var xhttp = new XMLHttpRequest();
+                xhttp.open("POST", `https://onlinetestapplication.herokuapp.com/registeredStudents/testTimes/${timesTaken}/${testIdInput.value}`, true);
+                //xhttp.open("POST", `http://localhost:3000/registeredStudents/testTimes/${timesTaken}/${testIdInput.value}`, true);
+                xhttp.onreadystatechange = function () {
+                    if (this.readyState == 4 && this.status == 200) {
+                        var response = this.responseText;
+                    }
+                };
+                xhttp.send();
 
-            var xhttp = new XMLHttpRequest();
-            xhttp.open("POST", `https://onlinetestapplication.herokuapp.com/registeredStudents/testTimes/${timesTaken}/${testIdInput.value}`, true);
-            //xhttp.open("POST", `http://localhost:3000/registeredStudents/testTimes/${timesTaken}/${testIdInput.value}`, true);
-            xhttp.onreadystatechange = function () {
-                if (this.readyState == 4 && this.status == 200) {
-                    var response = this.responseText;
+                if(`${dateTaken}`=='00:00') {
+                    var xhttp = new XMLHttpRequest();
+                    xhttp.open("POST", `https://onlinetestapplication.herokuapp.com/registeredStudents/checkTime/${hrsMin}/${testIdInput.value}`, true);
+                    //xhttp.open("POST", `http://localhost:3000/registeredStudents/checkTime/${hrsMin}/${testIdInput.value}`, true);
+                    xhttp.onreadystatechange = function () {
+                        if (this.readyState == 4 && this.status == 200) {
+                            var response = this.responseText;
+                        }
+                    };
+                    xhttp.send();
                 }
-            };
-            xhttp.send();
 
-            // questions = questions.slice(0, 180);
-            questions = questions.slice(0, 15);
+                // questions = questions.slice(0, 180);
+                questions = rQuestions(questions);
+                questions = questions.slice(0, 15);
 
-            document.getElementById('unattempted').textContent = questions.length;
+                document.getElementById('unattempted').textContent = questions.length;
 
-            document.getElementById('questionBox').style.width = "auto";
+                document.getElementById('questionBox').style.width = "auto";
 
-            document.getElementById('questionBox').style.left = "500px";
-            document.getElementById("instr").style.display = "none";
-            document.getElementById("instructions").style.display = "none";
-            randomQuestions = rQuestions(questions);
-            sidebar(randomQuestions);
-            startquiz(randomQuestions);
+                document.getElementById('questionBox').style.left = "500px";
+                document.getElementById("instr").style.display = "none";
+                document.getElementById("instructions").style.display = "none";
+                randomQuestions = rQuestions(questions);
+                sidebar(randomQuestions);
+                startquiz(randomQuestions);
+
+            }else {
+                
+                invalidId.textContent = 'Time limit exceeded!';
+                invalidId.style.visibility = 'visible';
+
+            }
 
         } else {
             if(!testTimes) {
@@ -231,6 +259,8 @@ function rQuestions(arr) {
         randomQuestions[i].userAnswer = [];
     }
     return randomQuestions;
+    // randomQuestions = randomQuestions.slice(0, 15)
+    // return randomQuestions;
 }
 
 function startTimer() {
@@ -661,6 +691,17 @@ function refresh() {
 
 function endTest() {
 
+    var nosWrong = 0;
+    var nosRight;
+
+    for(var counter=0; counter<questions.length; counter++) {
+        if(questions[counter].correct == false) {
+            nosWrong++;
+        }
+    }
+
+    nosRight = questions.length - nosWrong;
+
     stopTimer();
     clear();
 
@@ -708,21 +749,10 @@ function endTest() {
     var flgNo = document.getElementById('flagged').textContent;
     var scorePercent = Math.round((score / questions.length) * 100);
 
-    //adding test info to database
-    var xhttp = new XMLHttpRequest();
-    //xhttp.open("POST", `https://onlinetestapplication.herokuapp.com/test_details/data/${testId}/${attNo}/${unattNo}/${flgNo}/${scorePercent}`, true);
-    xhttp.open("POST", `http://localhost:3000/test_details/data/${testId}/${attNo}/${unattNo}/${flgNo}/${scorePercent}`, true);
-    xhttp.onreadystatechange = function () {
-        if (this.readyState == 4 && this.status == 200) {
-            var response = this.responseText;
-        }
-    };
-    xhttp.send();
-
     var review = document.createElement('button');
     review.setAttribute('id', 'reviewBtn');
     review.setAttribute('onclick', 'showReview()');
-    review.textContent = 'Review the test';
+    review.textContent = 'Review Answers';
 
     var passPercentage = document.createElement('p');
     passPercentage.setAttribute("class", "scorePagedetails");
@@ -741,6 +771,14 @@ function endTest() {
     flaggedStatus.setAttribute("class", "scorePagedetails");
     flaggedStatus.textContent = 'Marked for review: ' + document.getElementById('flagged').textContent;
 
+    var passed = document.createElement('p');
+    passed.setAttribute("class", "scorePagedetails");
+    passed.textContent = 'Correct Answers: ' + nosRight;
+
+    var failed = document.createElement('p');
+    failed.setAttribute("class", "scorePagedetails");
+    failed.textContent = 'Wrong Answers: ' + nosWrong;
+
     quiz.appendChild(tickIcon);
     quiz.appendChild(heading);
 
@@ -749,6 +787,8 @@ function endTest() {
     quiz.appendChild(attStatus);
     quiz.appendChild(unattStatus);
     quiz.appendChild(flaggedStatus);
+    quiz.appendChild(passed);
+    quiz.appendChild(failed);
 
     quiz.appendChild(review);
 
