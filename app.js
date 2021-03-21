@@ -26,6 +26,6 @@ app.use('/test_details', studentRoutes)
 app.use('/registeredStudents', registeredStudentsRoutes)
 
 // port
-app.listen(3000, () => {
+app.listen(port, () => {
   console.log('App is running on port ' + port)
 })
