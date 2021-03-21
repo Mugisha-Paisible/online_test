@@ -1,5 +1,5 @@
 body{
-    /* overflow-x: hidden; */
+    overflow-x: hidden;
     user-select: none;
     font-family: sans-serif;
     min-height: 100vh;
@@ -583,13 +583,20 @@ hr {
 } */
 #copyrt {
     position: static;
-    font-size: smaller;
+    font-size: 90%;
     opacity: 95%;
     margin-top: 48%;
 
     /* margin-left: 40%; */
-    text-align: center;
-
-    
+    /* text-align: center; */
+    border: 0.5px solid grey;
+    background-color: grey;
     width: 100%;
+    box-shadow: 10px 0 0 0;
+}
+
+#copyrt > p {
+    /* text-align: center; */
+    padding-left: 40%;
+    color: white;
 }
