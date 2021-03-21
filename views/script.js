@@ -109,7 +109,12 @@ function init() {
                         testTimes = true;
                     }
                     timesTaken = regStudents[count]['times_taken'];
-                    dateTaken = (regStudents[count]['date_time']).slice(0, 10);
+                    dateTaken = (regStudents[count]['date_time']);
+
+                    if(dateTaken!=null) {
+                        dateTaken = dateTaken.slice(0, 10);
+                    }
+
                 }
 
             }
@@ -121,16 +126,18 @@ function init() {
 
         if ((testIdInput.value != "") && (questions.length > 0) && !isNaN(testIdInput.value) && (testIdInput.value.length == 6) && registered && testTimes) {
 
-            function findDiff(date) {
-                var startDate = new Date(date);
-                var diffDate = new Date(new Date() - startDate);
-            
-                return (((diffDate.toISOString().slice(0, 4) - 1970)*12*30) + ((diffDate.getMonth())*30) + (diffDate.getDate()-1));
+            if(dateTaken!=null) {
+                function findDiff(date) {
+                    var startDate = new Date(date);
+                    var diffDate = new Date(new Date() - startDate);
+                
+                    return (((diffDate.toISOString().slice(0, 4) - 1970)*12*30) + ((diffDate.getMonth())*30) + (diffDate.getDate()-1));
+                }
+
+                var daysDiff = findDiff(dateTaken);
             }
 
-            var daysDiff = findDiff(dateTaken);
-
-            if (daysDiff<=30 || `${dateTaken}` == 0) {
+            if (daysDiff<=30 || dateTaken == null) {
 
                 testId = testIdInput.value;
 
@@ -148,7 +155,9 @@ function init() {
                 };
                 xhttp.send();
 
-                if (`${dateTaken}` == 0) {
+                var date = ((new Date).getFullYear()) +'-'+ ('0' + ((new Date).getMonth())).slice(-2) +'-'+ ('0' + ((new Date).getDate())).slice(-2);
+
+                if (dateTaken == null) {
                     var xhttp = new XMLHttpRequest();
                     xhttp.open("POST", `https://onlinetestapplication.herokuapp.com/registeredStudents/checkTime/${date}/${testIdInput.value}`, true);
                     //xhttp.open("POST", `http://localhost:3000/registeredStudents/checkTime/${date}/${testIdInput.value}`, true);
