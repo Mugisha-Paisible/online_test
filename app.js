@@ -8,12 +8,12 @@ const bodyParser = require('body-parser')
 var cors = require('cors')
 app.use(cors())
 
-app.use( express.urlencoded({extended: true}))
-app.use(express.json())
-
 const questionRoutes = require('./routes/questions')
 const studentRoutes = require('./routes/test_details')
 const registeredStudentsRoutes = require('./routes/registered_students.js')
+
+app.use( express.urlencoded({extended: true}))
+app.use(express.json())
 
 app.use(express.static(__dirname + '/views'));
 
