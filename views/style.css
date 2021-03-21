@@ -125,7 +125,9 @@ tr {
     top: 2.6%;
     /* align-self: flex-end; */
 }
+
 .quiz-container{
+    max-width: 40%;
     position: absolute;
     left: 50%;
     transform: translate(-50%);
@@ -144,6 +146,7 @@ tr {
     border-radius: 1rem;
     box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.1);
 }
+
 #reviewBoxContainer {
 
     position: static;
@@ -248,7 +251,7 @@ tr {
 #sidebar li:hover{
     border: 1px solid black;
 }
-#next, #previous, #flag, #startQuiz, .confButton, #reviewBtn, #nextPage, #prevPage, #scorePageBtn{
+#next, #previous, #flag, #startQuiz, .confButton, #reviewBtn, #nextPage, #prevPage, #scorePageBtn, #homeBtn{
     /* font-family: "Times New Roman"; */
     font-family: 'Public Sans', sans-serif;
     font-weight: lighter;
@@ -265,6 +268,9 @@ tr {
     cursor: pointer;
     transition: 0.3s;
     margin-top: 7%;
+}
+#reviewBtn{
+    margin-right: 2%;
 }
 .correctAnswer, .yourAnswer {
     height: 5%;
@@ -505,7 +511,6 @@ hr {
 #logo {
     position: relative;
     left: 4%;
-    /* top: -9.5%; */
     top: 1.5%;
     display: inline-block;
 }

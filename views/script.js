@@ -121,18 +121,18 @@ function init() {
 
         if ((testIdInput.value != "") && (questions.length > 0) && !isNaN(testIdInput.value) && (testIdInput.value.length == 6) && registered && testTimes) {
 
-            var hrsMin = ('0' + (new Date).getHours()).slice(-2) +':'+ ('0' + (new Date).getMinutes()).slice(-2);
+            var date = (new Date).getDate();
 
-            var timeDiff = (((parseInt(hrsMin.slice(0, 2)))*60) + ((parseInt(hrsMin.slice(3, 5))))) - (((parseInt(dateTaken.slice(0, 2)))*60) + ((parseInt(dateTaken.slice(3, 5))))) ;
-            
-            if(timeDiff<60 || `${dateTaken}`=='00:00'){
-                
+            var timeDiff = date - dateTaken;
+
+            if (timeDiff < 30 || `${dateTaken}` == 0) {
+
                 testId = testIdInput.value;
 
                 timesTaken++;
 
                 document.getElementById('headerPanel').style.height = '68px';
-                
+
                 var xhttp = new XMLHttpRequest();
                 xhttp.open("POST", `https://onlinetestapplication.herokuapp.com/registeredStudents/testTimes/${timesTaken}/${testIdInput.value}`, true);
                 //xhttp.open("POST", `http://localhost:3000/registeredStudents/testTimes/${timesTaken}/${testIdInput.value}`, true);
@@ -143,10 +143,10 @@ function init() {
                 };
                 xhttp.send();
 
-                if(`${dateTaken}`=='00:00') {
+                if (`${dateTaken}` == 0) {
                     var xhttp = new XMLHttpRequest();
-                    xhttp.open("POST", `https://onlinetestapplication.herokuapp.com/registeredStudents/checkTime/${hrsMin}/${testIdInput.value}`, true);
-                    //xhttp.open("POST", `http://localhost:3000/registeredStudents/checkTime/${hrsMin}/${testIdInput.value}`, true);
+                    xhttp.open("POST", `https://onlinetestapplication.herokuapp.com/registeredStudents/checkTime/${date}/${testIdInput.value}`, true);
+                    //xhttp.open("POST", `http://localhost:3000/registeredStudents/checkTime/${date}/${testIdInput.value}`, true);
                     xhttp.onreadystatechange = function () {
                         if (this.readyState == 4 && this.status == 200) {
                             var response = this.responseText;
@@ -155,30 +155,29 @@ function init() {
                     xhttp.send();
                 }
 
-                // questions = questions.slice(0, 180);
                 questions = rQuestions(questions);
-                questions = questions.slice(0, 15);
+                questions = questions.slice(0, 180);
 
                 document.getElementById('unattempted').textContent = questions.length;
 
                 document.getElementById('questionBox').style.width = "auto";
 
-                document.getElementById('questionBox').style.left = "500px";
+                document.getElementById('questionBox').style.left = "550px";
                 document.getElementById("instr").style.display = "none";
                 document.getElementById("instructions").style.display = "none";
                 randomQuestions = rQuestions(questions);
                 sidebar(randomQuestions);
                 startquiz(randomQuestions);
 
-            }else {
-                
+            } else {
+
                 invalidId.textContent = 'Time limit exceeded!';
                 invalidId.style.visibility = 'visible';
 
             }
 
         } else {
-            if(!testTimes) {
+            if (!testTimes) {
                 invalidId.textContent = 'Maximum attempts reached!';
             }
             invalidId.style.visibility = 'visible';
@@ -259,8 +258,6 @@ function rQuestions(arr) {
         randomQuestions[i].userAnswer = [];
     }
     return randomQuestions;
-    // randomQuestions = randomQuestions.slice(0, 15)
-    // return randomQuestions;
 }
 
 function startTimer() {
@@ -694,8 +691,8 @@ function endTest() {
     var nosWrong = 0;
     var nosRight;
 
-    for(var counter=0; counter<questions.length; counter++) {
-        if(questions[counter].correct == false) {
+    for (var counter = 0; counter < questions.length; counter++) {
+        if (questions[counter].correct == false) {
             nosWrong++;
         }
     }
@@ -749,10 +746,26 @@ function endTest() {
     var flgNo = document.getElementById('flagged').textContent;
     var scorePercent = Math.round((score / questions.length) * 100);
 
+    //pushing test details to database
+    var xhttp = new XMLHttpRequest();
+    //xhttp.open("POST", `https://onlinetestapplication.herokuapp.com/test_details/data/${testId}/${attNo}/${unattNo}/${flgNo}/${nosWrong}/${nosRight}/${scorePercent}`, true);
+    xhttp.open("POST", `http://localhost:3000/test_details/data/${testId}/${attNo}/${unattNo}/${flgNo}/${nosWrong}/${nosRight}/${scorePercent}`, true);
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            var response = this.responseText;
+        }
+    };
+    xhttp.send();
+
     var review = document.createElement('button');
     review.setAttribute('id', 'reviewBtn');
     review.setAttribute('onclick', 'showReview()');
     review.textContent = 'Review Answers';
+
+    var homeBtn = document.createElement('button');
+    homeBtn.setAttribute('id', 'homeBtn');
+    homeBtn.setAttribute('onClick', 'window.location.reload();');
+    homeBtn.textContent = 'Return Home';
 
     var passPercentage = document.createElement('p');
     passPercentage.setAttribute("class", "scorePagedetails");
@@ -791,6 +804,7 @@ function endTest() {
     quiz.appendChild(failed);
 
     quiz.appendChild(review);
+    quiz.appendChild(homeBtn);
 
     document.getElementById('noButton').style.display = 'none';
     document.getElementById('yesButton').style.display = 'none';
@@ -803,7 +817,7 @@ function continueTest() {
 
     document.getElementById('copyrt').style.display = 'inline-block';
     //document.getElementById('logo').style.left = "32%";
-    document.getElementById('questionBox').style.left = "500px";
+    document.getElementById('questionBox').style.left = "550px";
 
     document.getElementById('sidebar').style.visibility = 'visible';
     document.getElementById('timer').style.visibility = 'visible';
