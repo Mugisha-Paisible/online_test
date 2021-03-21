@@ -6,7 +6,7 @@ body{
     background-size: 100px 50px;
     margin: 0;
     position: relative;
-    padding-bottom: 2%;
+    padding-bottom: 0%;
 }
 body::-webkit-scrollbar-thumb {
     background-color: #e0e6e0;
@@ -584,8 +584,12 @@ hr {
 #copyrt {
     position: static;
     font-size: smaller;
-    opacity: 80%;
-    margin-top: 50%;
+    opacity: 95%;
+    margin-top: 48%;
 
-    margin-left: 40%;
+    /* margin-left: 40%; */
+    text-align: center;
+
+    
+    width: 100%;
 }

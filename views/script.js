@@ -191,7 +191,9 @@ function init() {
             }
 
         } else {
-            if (!testTimes) {
+            if(testIdInput.value == "") {
+                invalidId.textContent = 'First enter your test ID';
+            }else if (!testTimes) {
                 invalidId.textContent = 'Maximum attempts reached!';
             }
             invalidId.style.visibility = 'visible';
