@@ -109,7 +109,7 @@ function init() {
                         testTimes = true;
                     }
                     timesTaken = regStudents[count]['times_taken'];
-                    dateTaken = regStudents[count]['date_time'];
+                    dateTaken = (regStudents[count]['date_time']).slice(0, 10);
                 }
 
             }
@@ -121,11 +121,16 @@ function init() {
 
         if ((testIdInput.value != "") && (questions.length > 0) && !isNaN(testIdInput.value) && (testIdInput.value.length == 6) && registered && testTimes) {
 
-            var date = (new Date).getDate();
+            function findDiff(date) {
+                var startDate = new Date(date);
+                var diffDate = new Date(new Date() - startDate);
+            
+                return (((diffDate.toISOString().slice(0, 4) - 1970)*12*30) + ((diffDate.getMonth())*30) + (diffDate.getDate()-1));
+            }
 
-            var timeDiff = date - dateTaken;
+            var daysDiff = findDiff(dateTaken);
 
-            if (timeDiff < 30 || `${dateTaken}` == 0) {
+            if (daysDiff<=30 || `${dateTaken}` == 0) {
 
                 testId = testIdInput.value;
 
