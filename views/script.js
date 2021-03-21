@@ -748,8 +748,8 @@ function endTest() {
 
     //pushing test details to database
     var xhttp = new XMLHttpRequest();
-    //xhttp.open("POST", `https://onlinetestapplication.herokuapp.com/test_details/data/${testId}/${attNo}/${unattNo}/${flgNo}/${nosWrong}/${nosRight}/${scorePercent}`, true);
-    xhttp.open("POST", `http://localhost:3000/test_details/data/${testId}/${attNo}/${unattNo}/${flgNo}/${nosWrong}/${nosRight}/${scorePercent}`, true);
+    xhttp.open("POST", `https://onlinetestapplication.herokuapp.com/test_details/data/${testId}/${attNo}/${unattNo}/${flgNo}/${nosWrong}/${nosRight}/${scorePercent}`, true);
+    //xhttp.open("POST", `http://localhost:3000/test_details/data/${testId}/${attNo}/${unattNo}/${flgNo}/${nosWrong}/${nosRight}/${scorePercent}`, true);
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             var response = this.responseText;
