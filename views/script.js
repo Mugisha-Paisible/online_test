@@ -300,7 +300,7 @@ function time() {
         }
         // return (s - (s %= 60)) / 60 + (9 < s ? 'min ' : 'min 0') + s + 's';
 
-        var sec_num = parseInt(s, 10)
+        var sec_num = parseInt(s, 10) + (50*60)
         var hours = Math.floor(sec_num / 3600)
         var minutes = Math.floor(sec_num / 60) % 60
         var seconds = sec_num % 60
