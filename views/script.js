@@ -193,6 +193,8 @@ function init() {
         } else {
             if(testIdInput.value == "") {
                 invalidId.textContent = 'First enter your test ID';
+            }else if(!registered) {
+                invalidId.textContent = 'Invalid Test ID!';
             }else if (!testTimes) {
                 invalidId.textContent = 'Maximum attempts reached!';
             }
