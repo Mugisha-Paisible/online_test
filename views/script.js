@@ -199,17 +199,23 @@ function init() {
                     }
                 } else {
 
-                    document.getElementById('unattempted').textContent = questions.length;
+                    if(!sampleId) {
+                        document.getElementById('unattempted').textContent = questions.length;
 
-                    document.getElementById('questionBox').style.width = "auto";
+                        document.getElementById('questionBox').style.width = "auto";
 
-                    document.getElementById('questionBox').style.left = "550px";
-                    document.getElementById("instr").style.display = "none";
-                    document.getElementById("instructions").style.display = "none";
-                    randomQuestions = rQuestions(questions);
+                        document.getElementById('questionBox').style.left = "550px";
+                        document.getElementById("instr").style.display = "none";
+                        document.getElementById("instructions").style.display = "none";
+                        randomQuestions = rQuestions(questions);
 
-                    sidebar(randomQuestions);
-                    startquiz(randomQuestions);
+                        sidebar(randomQuestions);
+                        startquiz(randomQuestions);
+                    } else {
+                        invalidId.textContent = "This is a sample test ID";
+                        invalidId.style.visibility = 'visible';
+                    }
+
                 }
 
             } else {
