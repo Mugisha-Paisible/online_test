@@ -105,7 +105,7 @@ function init() {
                     timesTaken = regStudents[count]['times_taken'];
                     dateTaken = (regStudents[count]['date_time']);
 
-                    if(dateTaken!=null) {
+                    if (dateTaken != null) {
                         dateTaken = dateTaken.slice(0, 10);
                     }
 
@@ -115,30 +115,30 @@ function init() {
 
         }
 
-        
+
 
         if ((testIdInput.value != "") && (questions.length > 0) && !isNaN(testIdInput.value) && (testIdInput.value.length == 6) && registered && testTimes) {
 
-            if(dateTaken!=null) {
+            if (dateTaken != null) {
                 function findDiff(date) {
                     var startDate = new Date(date);
                     var diffDate = new Date(new Date() - startDate);
-                
-                    return (((diffDate.toISOString().slice(0, 4) - 1970)*12*30) + ((diffDate.getMonth())*30) + (diffDate.getDate()-1));
+
+                    return (((diffDate.toISOString().slice(0, 4) - 1970) * 12 * 30) + ((diffDate.getMonth()) * 30) + (diffDate.getDate() - 1));
                 }
 
                 var daysDiff = findDiff(dateTaken);
             }
 
             var sampleId = false;
-            for(var count = 0; count<regStudents.length; count++) {
-                if((regStudents[count].test_id == testIdInput.value) && regStudents[count].sample) {
+            for (var count = 0; count < regStudents.length; count++) {
+                if ((regStudents[count].test_id == testIdInput.value) && regStudents[count].sample) {
                     sampleId = true;
                     break;
                 }
             }
-            
-            if (daysDiff<=((sampleId)?3:30) || dateTaken == null) {
+
+            if (daysDiff <= ((sampleId) ? 3 : 30) || dateTaken == null) {
 
                 testId = testIdInput.value;
 
@@ -156,8 +156,8 @@ function init() {
                 };
                 xhttp.send();
 
-                var date = ((new Date).getFullYear()) + '-' + ('0' + (parseInt((new Date).getMonth())+1)).slice(-2) + '-' + ('0' + ((new Date).getDate())).slice(-2);
-                
+                var date = ((new Date).getFullYear()) + '-' + ('0' + (parseInt((new Date).getMonth()) + 1)).slice(-2) + '-' + ('0' + ((new Date).getDate())).slice(-2);
+
                 if (dateTaken == null) {
                     var xhttp = new XMLHttpRequest();
                     xhttp.open("POST", `https://onlinetestapplication.herokuapp.com/registeredStudents/checkTime/${date}/${testIdInput.value}`, true);
@@ -173,22 +173,44 @@ function init() {
                 questions = rQuestions(questions);
                 // questions = questions.slice(0, 180);
 
-                if(sampleId){
+                if (sampleId) {
                     questions = questions.slice(0, 15);
-                }else {
+                } else {
                     questions = questions.slice(0, 180);
                 }
 
-                document.getElementById('unattempted').textContent = questions.length;
+                if (window.location.href.slice(-6) == 'sample') {
+                    if (!sampleId) {
+                        invalidId.textContent = 'Not a sample test ID';
+                        invalidId.style.visibility = 'visible';
+                    } else {
 
-                document.getElementById('questionBox').style.width = "auto";
+                        document.getElementById('unattempted').textContent = questions.length;
 
-                document.getElementById('questionBox').style.left = "550px";
-                document.getElementById("instr").style.display = "none";
-                document.getElementById("instructions").style.display = "none";
-                randomQuestions = rQuestions(questions);
-                sidebar(randomQuestions);
-                startquiz(randomQuestions);
+                        document.getElementById('questionBox').style.width = "auto";
+
+                        document.getElementById('questionBox').style.left = "550px";
+                        document.getElementById("instr").style.display = "none";
+                        document.getElementById("instructions").style.display = "none";
+                        randomQuestions = rQuestions(questions);
+
+                        sidebar(randomQuestions);
+                        startquiz(randomQuestions);
+                    }
+                } else {
+
+                    document.getElementById('unattempted').textContent = questions.length;
+
+                    document.getElementById('questionBox').style.width = "auto";
+
+                    document.getElementById('questionBox').style.left = "550px";
+                    document.getElementById("instr").style.display = "none";
+                    document.getElementById("instructions").style.display = "none";
+                    randomQuestions = rQuestions(questions);
+
+                    sidebar(randomQuestions);
+                    startquiz(randomQuestions);
+                }
 
             } else {
 
@@ -198,11 +220,11 @@ function init() {
             }
 
         } else {
-            if(testIdInput.value == "") {
+            if (testIdInput.value == "") {
                 invalidId.textContent = 'First enter your test ID';
-            }else if(!registered) {
+            } else if (!registered) {
                 invalidId.textContent = 'Invalid Test ID!';
-            }else if (!testTimes) {
+            } else if (!testTimes) {
                 invalidId.textContent = 'Maximum attempts reached!';
             }
             invalidId.style.visibility = 'visible';
@@ -308,10 +330,10 @@ function time() {
             quizTimer.style.visibility = "hidden";
         }
 
-        if(questions.length==15){
+        if (questions.length == 15) {
             var sec_num = parseInt(s, 10);
-        }else {
-            var sec_num = parseInt(s, 10) + (50*60);
+        } else {
+            var sec_num = parseInt(s, 10) + (50 * 60);
         }
 
         var hours = Math.floor(sec_num / 3600)
