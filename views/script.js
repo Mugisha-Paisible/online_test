@@ -18,12 +18,6 @@ window.onbeforeunload = function () {
     return "Data will be lost if you leave the page, are you sure?";
 };
 
-//prevent screenshots
-
-
-
-//
-
 function init() {
 
     var xhttp = new XMLHttpRequest();
@@ -121,8 +115,7 @@ function init() {
 
         }
 
-
-
+        
 
         if ((testIdInput.value != "") && (questions.length > 0) && !isNaN(testIdInput.value) && (testIdInput.value.length == 6) && registered && testTimes) {
 
@@ -137,7 +130,15 @@ function init() {
                 var daysDiff = findDiff(dateTaken);
             }
 
-            if (daysDiff<=30 || dateTaken == null) {
+            var sampleId = false;
+            for(var count = 0; count<regStudents.length; count++) {
+                if((regStudents[count].test_id == testIdInput.value) && regStudents[count].sample) {
+                    sampleId = true;
+                    break;
+                }
+            }
+            
+            if (daysDiff<=((sampleId)?3:30) || dateTaken == null) {
 
                 testId = testIdInput.value;
 
@@ -155,8 +156,8 @@ function init() {
                 };
                 xhttp.send();
 
-                var date = ((new Date).getFullYear()) +'-'+ ('0' + ((new Date).getMonth())).slice(-2) +'-'+ ('0' + ((new Date).getDate())).slice(-2);
-
+                var date = ((new Date).getFullYear()) + '-' + ('0' + (parseInt((new Date).getMonth())+1)).slice(-2) + '-' + ('0' + ((new Date).getDate())).slice(-2);
+                
                 if (dateTaken == null) {
                     var xhttp = new XMLHttpRequest();
                     xhttp.open("POST", `https://onlinetestapplication.herokuapp.com/registeredStudents/checkTime/${date}/${testIdInput.value}`, true);
@@ -170,7 +171,13 @@ function init() {
                 }
 
                 questions = rQuestions(questions);
-                questions = questions.slice(0, 180);
+                // questions = questions.slice(0, 180);
+
+                if(sampleId){
+                    questions = questions.slice(0, 15);
+                }else {
+                    questions = questions.slice(0, 180);
+                }
 
                 document.getElementById('unattempted').textContent = questions.length;
 
@@ -300,9 +307,13 @@ function time() {
         if (s < 0) {
             quizTimer.style.visibility = "hidden";
         }
-        // return (s - (s %= 60)) / 60 + (9 < s ? 'min ' : 'min 0') + s + 's';
 
-        var sec_num = parseInt(s, 10) + (50*60)
+        if(questions.length==15){
+            var sec_num = parseInt(s, 10);
+        }else {
+            var sec_num = parseInt(s, 10) + (50*60);
+        }
+
         var hours = Math.floor(sec_num / 3600)
         var minutes = Math.floor(sec_num / 60) % 60
         var seconds = sec_num % 60

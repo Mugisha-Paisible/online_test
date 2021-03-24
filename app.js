@@ -21,6 +21,10 @@ app.get('/', async function (req, res) {
   return res.sendFile(__dirname + '/views/index.html');
 })
 
+app.get('/sample', async function (req, res) {
+  return res.sendFile(__dirname + '/views/sample.html');
+})
+
 app.use('/questions', questionRoutes)
 app.use('/test_details', studentRoutes)
 app.use('/registeredStudents', registeredStudentsRoutes)
